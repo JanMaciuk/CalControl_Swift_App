@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1DEA2FB2CE645100007FBBC /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEA2FA2CE645080007FBBC /* DremsView.swift */; };
 		D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762612CCA8F92008EFE6A /* CalControlApp.swift */; };
 		D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762632CCA8F92008EFE6A /* ContentView.swift */; };
 		D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762652CCA8F96008EFE6A /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A1DEA2FA2CE645080007FBBC /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DremsView.swift; sourceTree = "<group>"; };
 		D7A7625E2CCA8F92008EFE6A /* CalControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A762612CCA8F92008EFE6A /* CalControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalControlApp.swift; sourceTree = "<group>"; };
 		D7A762632CCA8F92008EFE6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		D7A762602CCA8F92008EFE6A /* CalControl */ = {
 			isa = PBXGroup;
 			children = (
+				A1DEA2FA2CE645080007FBBC /* DremsView.swift */,
 				D7A762612CCA8F92008EFE6A /* CalControlApp.swift */,
 				D7A762632CCA8F92008EFE6A /* ContentView.swift */,
 				D7A762652CCA8F96008EFE6A /* Assets.xcassets */,
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DEA2FB2CE645100007FBBC /* DremsView.swift in Sources */,
 				D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */,
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
 			);
