@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
+		A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */; };
 		D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762612CCA8F92008EFE6A /* CalControlApp.swift */; };
 		D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762632CCA8F92008EFE6A /* ContentView.swift */; };
 		D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762652CCA8F96008EFE6A /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
+		A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen2.swift; sourceTree = "<group>"; };
 		D7A7625E2CCA8F92008EFE6A /* CalControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A762612CCA8F92008EFE6A /* CalControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalControlApp.swift; sourceTree = "<group>"; };
 		D7A762632CCA8F92008EFE6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		D7A762602CCA8F92008EFE6A /* CalControl */ = {
 			isa = PBXGroup;
 			children = (
+				A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */,
 				A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */,
 				A19DB3212CEF7AE4000677C7 /* DremsView.swift */,
 				D7A762612CCA8F92008EFE6A /* CalControlApp.swift */,
@@ -265,6 +268,7 @@
 			files = (
 				A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */,
 				A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */,
+				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
 				D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */,
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
 			);
