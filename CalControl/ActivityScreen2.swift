@@ -6,6 +6,16 @@
 //
 import SwiftUI
 
+struct ChevonLeftView:View{
+    var body: some View{
+        Image(systemName: "chevron.left")
+            .font(.system(size: 32, weight: .bold))
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 struct ActivityScreen2:View{
     @State var activityTime = Date.now
     
@@ -17,19 +27,16 @@ struct ActivityScreen2:View{
        @State private var selectedFruit: String = "banana"
     
     var body: some View {
-
-        ZStack
-        {
-            Color.black.edgesIgnoringSafeArea(.all)
+        
+        NavigationView{
                 VStack {
-                    
-                    
                         ZStack {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            NavigationLink(destination: MainMenuView()
+                                .navigationBarBackButtonHidden(true)
+                                .navigationBarHidden(true)){
+                                ChevonLeftView().padding(.top)
+                            }
+
                             
                             Text("Add new activity")
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -42,20 +49,22 @@ struct ActivityScreen2:View{
                         
                         
                         
-                    HStack{
-                        Text("Activity")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                        VStack {
-                            Picker("fruits", selection: $selectedFruit) {
-                                ForEach(friuts, id: \.self) { fruit in
-                                    Text(fruit)
-                                }
+                        HStack{
+                            Text("Activity")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding()
+                            VStack {
+                                Picker("fruits", selection: $selectedFruit) {
+                                    ForEach(friuts, id: \.self) { fruit in
+                                        Text(fruit)
+                                            .foregroundColor(.white)
+                                    }
+                                }.background(Color.white.opacity(0.2))
+                                    .cornerRadius(15)
                             }
                         }
-                    }
                         
                         HStack{
                             Text("Time")
@@ -66,6 +75,7 @@ struct ActivityScreen2:View{
                             DatePicker("",selection: $activityTime, displayedComponents: .hourAndMinute).colorInvert()
                                 .padding(.trailing, 20)
                                 .font(.system(size: 24, weight: .bold))
+                                .cornerRadius(15)
                                 
                         }
 
@@ -82,7 +92,8 @@ struct ActivityScreen2:View{
                                 ForEach(friuts, id: \.self) { fruit in
                                     Text(fruit)
                                 }
-                            }
+                            }.background(Color.white.opacity(0.2))
+                                .cornerRadius(15)
                         }
                     }
                     
@@ -109,7 +120,18 @@ struct ActivityScreen2:View{
                         }
                         //TODO photo here
                     }
-
+                    NavigationLink(
+                        destination: MainMenuView(),
+                        label: {
+                            Text("Add")
+                                .padding()
+                                .background(.white)
+                                .foregroundColor(.black)
+                                .clipShape(Capsule())
+                                .frame(width: UIScreen.main.bounds.width * 0.8) // does not work correctly
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                    )
                     Spacer()
                     Divider()
                         Text("Activity missing ?")
@@ -133,8 +155,8 @@ struct ActivityScreen2:View{
                     )
                     
                         
-                }
-            }
+                }.background(Color.black)
+        }.navigationBarHidden(true)
         }
     
 }
