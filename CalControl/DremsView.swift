@@ -26,7 +26,6 @@ struct DreamsView:View{
                 Spacer()
             }
             
-            Spacer()
             // TODO bed logo/ icon
             Image(systemName:"star")
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -73,11 +72,31 @@ struct DreamsView:View{
             }
                 .padding(.top, 20)
                 .font(.system(size: 24, weight: .bold))
+            Spacer()
+            NavigationLink(
+                destination: MainMenuView(),
+                label: {
+                    Text("Add")
+                        .padding()
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
+                        .frame(width: UIScreen.main.bounds.width * 0.8) // does not work correctly
+                        .font(.system(size: 20, weight: .semibold))
+                }
+            )
+            
+            Divider()
+            
+            Text("Dreams hisotry:")
+                .foregroundColor(.white)
+                .font(.system(size: 40, weight: .semibold))
+                .padding(.bottom, 20)
             
             Spacer()
-            Button(action: tmp) {
-                Text("Apply")
-            }
+            
+            //TODO dreams history
+            
             }
             .background(Color.black)
         }
