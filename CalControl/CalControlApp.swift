@@ -11,7 +11,7 @@ import SwiftUI
 struct CalControlApp: App {
     var body: some Scene {
         WindowGroup {
-            MainMenuView()
+            SetupScreenView()
         }
     }
 }
