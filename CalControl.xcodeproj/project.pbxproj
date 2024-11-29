@@ -38,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreen1.swift; sourceTree = "<group>"; };
+		A1346B902CF8C03200CD39A7 /* ActivityScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreen2.swift; sourceTree = "<group>"; };
+		A1346B922CF8D93500CD39A7 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		A1346B942CF8D96400CD39A7 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
+		A1346B962CF8D97600CD39A7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A16C987B2CF8CA6A008A4681 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
@@ -102,6 +107,11 @@
 		D7A762602CCA8F92008EFE6A /* CalControl */ = {
 			isa = PBXGroup;
 			children = (
+				A1346B962CF8D97600CD39A7 /* FileManager.swift */,
+				A1346B942CF8D96400CD39A7 /* Records.swift */,
+				A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */,
+				A1346B922CF8D93500CD39A7 /* Content.swift */,
+				A1346B902CF8C03200CD39A7 /* ActivityScreen2.swift */,
 				A16C987B2CF8CA6A008A4681 /* AppState.swift */,
 				A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */,
 				A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */,
@@ -269,6 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1346B912CF8C03300CD39A7 /* ActivityScreen2.swift in Sources */,
+				A1346B952CF8D96700CD39A7 /* Records.swift in Sources */,
+				A1346B932CF8D93E00CD39A7 /* Content.swift in Sources */,
+				A1346B972CF8D97C00CD39A7 /* FileManager.swift in Sources */,
+				A1346B8F2CF8B94600CD39A7 /* ActivityScreen1.swift in Sources */,
 				A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */,
 				A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */,
 				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
