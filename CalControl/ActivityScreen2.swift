@@ -6,7 +6,8 @@
 //
 import SwiftUI
 
-struct ChevonLeftView:View{
+struct ChevronLeftView:View{
+    @ObservedObject var appState: AppState
     var body: some View{
         Image(systemName: "chevron.left")
             .font(.system(size: 32, weight: .bold))
@@ -163,7 +164,7 @@ struct ActivityScreen2:View{
 
 struct ActivityScreen2_Preview: PreviewProvider{
     static var previews: some View {
-        ActivityScreen2()
+        ActivityScreen2(appState: AppState())
     }
     
 }

@@ -7,15 +7,16 @@
 import SwiftUI
 
 struct DreamsView:View{
+    @ObservedObject var appState: AppState
     @State var wakeUp = Date.now
     @State var wentSleep = Date.now
     var body: some View {
         NavigationView{
             VStack {
                 ZStack {
-                    NavigationLink(destination: MainMenuView().navigationBarBackButtonHidden(true)
+                    NavigationLink(destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true)
                         .navigationBarHidden(true)){
-                        ChevonLeftView().padding(.top)
+                        ChevronLeftView().padding(.top)
                     }
                     
                     Text("Manage dream")
@@ -74,7 +75,7 @@ struct DreamsView:View{
                 .font(.system(size: 24, weight: .bold))
                 Spacer()
                 NavigationLink(
-                    destination: MainMenuView(),
+                    destination: MainMenuView(appState: appState),
                     label: {
                         Text("Add")
                             .padding()
@@ -106,7 +107,7 @@ struct DreamsView:View{
 
 struct DremsView_Preview: PreviewProvider{
     static var previews: some View {
-        DreamsView()
+        DreamsView(appState: AppState())
     }
     
 }
@@ -114,4 +115,14 @@ struct DremsView_Preview: PreviewProvider{
 
 func tmp() -> Void {
 
+}
+
+struct ChevronLeftView:View{
+    var body: some View{
+        Image(systemName: "chevron.left")
+            .font(.system(size: 32, weight: .bold))
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
 }

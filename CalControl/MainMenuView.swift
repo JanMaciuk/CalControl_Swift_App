@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @ObservedObject var appState: AppState
     @State private var showWeightPopup = false
 
     var body: some View {
@@ -33,7 +34,7 @@ struct MainMenuView: View {
                             MenuOptionView(title: "Manage weight")
                         }
 
-                        NavigationLink(destination: AddMealView().navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                        NavigationLink(destination: AddMealView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage meals")
                         }
                     }
@@ -178,6 +179,6 @@ struct MenuOptionView: View {
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView()
+        MainMenuView(appState: AppState())
     }
 }

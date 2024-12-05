@@ -1,6 +1,12 @@
 import SwiftUI
+import AVFoundation
+let filePath = Bundle.main.path(forResource: "loginSound.mp3", ofType:nil)!
+let fileUrl = URL(fileURLWithPath: filePath)
+var bombSoundEffect: AVAudioPlayer?
 
 struct SetupScreenView2: View {
+    
+    
     @ObservedObject var appState: AppState
     @State private var bmiRangeIndex: Int = 1
     @State private var willMoveToNextScreen = false
@@ -154,13 +160,25 @@ struct SetupScreenView2: View {
                 Spacer()
             }
         }.onAppear {
+            playSound();
             updateBMIRange();  // Call the function when the view first appears
-        }}.navigate(to: MainMenuView(), when: $willMoveToNextScreen)
+            
+        }}.navigate(to: MainMenuView(appState: appState), when: $willMoveToNextScreen)
     }
 }
 
 struct SetupScreenView2_Previews: PreviewProvider {
     static var previews: some View {
         SetupScreenView2(appState: AppState())
+    }
+}
+
+
+func playSound() {
+    do {
+        bombSoundEffect = try AVAudioPlayer(contentsOf: fileUrl)
+        bombSoundEffect?.play()
+    } catch {
+        // couldn't load file :(
     }
 }

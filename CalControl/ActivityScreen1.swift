@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ActicityScreen1: View {
+    @ObservedObject var appState: AppState
     var body: some View {
         NavigationView {
             VStack {
@@ -76,6 +77,6 @@ struct ActicityScreen1: View {
 
 struct ActicityScreen1_Preview: PreviewProvider {
     static var previews: some View {
-        ActicityScreen1()
+        ActicityScreen1(appState: AppState())
     }
 }

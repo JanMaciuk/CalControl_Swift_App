@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AddMealView: View {
+    @ObservedObject var appState: AppState
     @State private var selectedProducer = "Value"
     @State private var gramsEaten = ""
     @State private var optionalNotes = ""
@@ -10,7 +11,7 @@ struct AddMealView: View {
         NavigationView {
             VStack(spacing: 20) {
                 HStack {
-                    NavigationLink(destination: MainMenuView().navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                    NavigationLink(destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                         ChevronLeft()
                     }
                     Spacer()
@@ -152,6 +153,6 @@ struct ChevronLeft: View {
 
 struct AddMealView_Previews: PreviewProvider {
     static var previews: some View {
-        AddMealView()
+        AddMealView(appState: AppState())
     }
 }
