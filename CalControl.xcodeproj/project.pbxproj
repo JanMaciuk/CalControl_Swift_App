@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165037A2D01F3DE003C5741 /* MainMenuView.swift */; };
+		A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16503792D01F3DE003C5741 /* AddMealView.swift */; };
 		A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C987B2CF8CA6A008A4681 /* AppState.swift */; };
 		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
 		A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */; };
 		D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762612CCA8F92008EFE6A /* CalControlApp.swift */; };
-		D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762632CCA8F92008EFE6A /* ContentView.swift */; };
 		D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762652CCA8F96008EFE6A /* Assets.xcassets */; };
 		D7A762692CCA8F96008EFE6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762682CCA8F96008EFE6A /* Preview Assets.xcassets */; };
 		D7A762732CCA8F96008EFE6A /* CalControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762722CCA8F96008EFE6A /* CalControlTests.swift */; };
@@ -43,13 +44,14 @@
 		A1346B922CF8D93500CD39A7 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A1346B942CF8D96400CD39A7 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
 		A1346B962CF8D97600CD39A7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		A16503792D01F3DE003C5741 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		A165037A2D01F3DE003C5741 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		A16C987B2CF8CA6A008A4681 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
 		A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen2.swift; sourceTree = "<group>"; };
 		D7A7625E2CCA8F92008EFE6A /* CalControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A762612CCA8F92008EFE6A /* CalControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalControlApp.swift; sourceTree = "<group>"; };
-		D7A762632CCA8F92008EFE6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7A762652CCA8F96008EFE6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7A762682CCA8F96008EFE6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7A7626E2CCA8F96008EFE6A /* CalControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,14 +112,15 @@
 				A1346B962CF8D97600CD39A7 /* FileManager.swift */,
 				A1346B942CF8D96400CD39A7 /* Records.swift */,
 				A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */,
-				A1346B922CF8D93500CD39A7 /* Content.swift */,
 				A1346B902CF8C03200CD39A7 /* ActivityScreen2.swift */,
+				A1346B922CF8D93500CD39A7 /* Content.swift */,
 				A16C987B2CF8CA6A008A4681 /* AppState.swift */,
 				A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */,
 				A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */,
 				A19DB3212CEF7AE4000677C7 /* DremsView.swift */,
 				D7A762612CCA8F92008EFE6A /* CalControlApp.swift */,
-				D7A762632CCA8F92008EFE6A /* ContentView.swift */,
+				A16503792D01F3DE003C5741 /* AddMealView.swift */,
+				A165037A2D01F3DE003C5741 /* MainMenuView.swift */,
 				D7A762652CCA8F96008EFE6A /* Assets.xcassets */,
 				D7A762672CCA8F96008EFE6A /* Preview Content */,
 			);
@@ -279,16 +282,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1346B912CF8C03300CD39A7 /* ActivityScreen2.swift in Sources */,
-				A1346B952CF8D96700CD39A7 /* Records.swift in Sources */,
-				A1346B932CF8D93E00CD39A7 /* Content.swift in Sources */,
-				A1346B972CF8D97C00CD39A7 /* FileManager.swift in Sources */,
-				A1346B8F2CF8B94600CD39A7 /* ActivityScreen1.swift in Sources */,
 				A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */,
+				A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */,
+				A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */,
 				A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */,
 				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
 				A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */,
-				D7A762642CCA8F92008EFE6A /* ContentView.swift in Sources */,
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
