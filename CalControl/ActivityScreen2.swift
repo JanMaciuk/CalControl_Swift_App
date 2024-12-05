@@ -6,18 +6,9 @@
 //
 import SwiftUI
 
-struct ChevronLeftView:View{
-    @ObservedObject var appState: AppState
-    var body: some View{
-        Image(systemName: "chevron.left")
-            .font(.system(size: 32, weight: .bold))
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
 
 struct ActivityScreen2:View{
+    @ObservedObject var appState: AppState
     @State var activityTime = Date.now
     
     @State private var selection: String?
@@ -32,10 +23,10 @@ struct ActivityScreen2:View{
         NavigationView{
                 VStack {
                         ZStack {
-                            NavigationLink(destination: MainMenuView()
+                            NavigationLink(destination: MainMenuView(appState: appState)
                                 .navigationBarBackButtonHidden(true)
                                 .navigationBarHidden(true)){
-                                ChevonLeftView().padding(.top)
+                                ChevronLeftView().padding(.top)
                             }
 
                             
@@ -122,7 +113,7 @@ struct ActivityScreen2:View{
                         //TODO photo here
                     }
                     NavigationLink(
-                        destination: MainMenuView(),
+                        destination: MainMenuView(appState: appState),
                         label: {
                             Text("Add")
                                 .padding()
@@ -143,7 +134,7 @@ struct ActivityScreen2:View{
                     Spacer()
                     
                     NavigationLink(
-                        destination: MainMenuView(),
+                        destination: MainMenuView(appState: appState),
                         label: {
                             Text("Add custom activity ")
                                 .padding()

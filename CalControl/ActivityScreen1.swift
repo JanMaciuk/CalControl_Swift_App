@@ -8,7 +8,7 @@ struct ActicityScreen1: View {
                 
                 ZStack {
                     NavigationLink(
-                        destination: MainMenuView().navigationBarBackButtonHidden(true)
+                        destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true)
                             .navigationBarHidden(true),
                         label: {
                             Image(systemName: "chevron.left")
@@ -57,7 +57,7 @@ struct ActicityScreen1: View {
                 
 
                 NavigationLink(
-                    destination: MainMenuView(),
+                    destination: MainMenuView(appState: appState),
                     label: {
                         Text("Add new activity")
                             .padding()
