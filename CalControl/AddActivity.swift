@@ -2,6 +2,10 @@ import SwiftUI
 
 struct AddActivity: View {
     @ObservedObject var appState: AppState
+    @State private var activity_name = ""
+    @State private var kcal_per_hour = ""
+
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,39 +28,46 @@ struct AddActivity: View {
                 
                 Divider()
                 
-                Text("Burned kcal: \(appState.kcal_burned)")
-                    .foregroundColor(.white)
-                    .font(.system(size: 32, weight: .semibold))
-                    .padding(.top)
+                VStack() {
+                    Text("Activity name")
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    HStack {
+                        TextField("Activity name", text: $activity_name)
+                            .padding(.leading, 10)
+                            .frame(height: 50)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                }
+                
+                VStack() {
+                    Text("Kcal per hour")
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    HStack {
+                        TextField("Kcal per hour", text: $kcal_per_hour)
+                            .keyboardType(.decimalPad)
+                            .padding(.leading, 10)
+                            .frame(height: 50)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                }
+                
                 
 
                 
                 Spacer()
-                Text("My activity today:")
-                    .foregroundColor(.white)
-                    .font(.system(size: 32, weight: .semibold))
-                    .padding(.top)
-                
-                ScrollViewReader { proxy in
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
-                            ForEach(0..<100, id: \.self) { i in
-                                Text("Example \(i)")
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(i % 2 == 0 ? Color.white.opacity(0.9) : Color.clear)
-                                    .cornerRadius(8)
-                                    .id(i)
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                    .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
-                }
-                
 
                 NavigationLink(
-                    destination: ActivityScreen2(appState: appState),
+                    destination: ActicityScreen1(appState: appState),
                     label: {
                         Text("Add new activity")
                             .padding()
@@ -72,7 +83,7 @@ struct AddActivity: View {
                 
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
-        }
+        }.navigationBarHidden(true)
     }
 }
 

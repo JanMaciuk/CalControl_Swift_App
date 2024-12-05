@@ -74,6 +74,7 @@ struct ActicityScreen1: View {
                 
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
+            .navigationBarHidden(true)
         }
     }
 }

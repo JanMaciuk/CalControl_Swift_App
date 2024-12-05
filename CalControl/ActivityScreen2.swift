@@ -152,7 +152,7 @@ struct ActivityScreen2:View{
                     Spacer()
                     
                     NavigationLink(
-                        destination: MainMenuView(appState: appState),
+                        destination: AddActivity(appState: appState),
                         label: {
                             Text("Add custom activity ")
                                 .padding()
