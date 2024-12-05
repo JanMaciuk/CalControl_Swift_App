@@ -1,29 +1,27 @@
 import SwiftUI
 
-struct ActicityScreen1: View {
+struct AddActivity: View {
     @ObservedObject var appState: AppState
     var body: some View {
         NavigationView {
             VStack {
                 
-                ZStack {
-                    NavigationLink(
-                        destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true)
-                            .navigationBarHidden(true),
-                        label: {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        })
-                    
-                    Text("Manage Activity")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .font(.system(size: 32, weight: .bold))
+                HStack {
+                    NavigationLink(destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                        ChevronLeft()
+                    }
+                    Spacer()
+                    Text("Add custom activity")
+                        .font(.system(size: 30))
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Spacer()
                 }
+                .padding(.horizontal)
+                
+                
+                
                 Divider()
                 
                 Text("Burned kcal: \(appState.kcal_burned)")
@@ -78,8 +76,8 @@ struct ActicityScreen1: View {
     }
 }
 
-struct ActicityScreen1_Preview: PreviewProvider {
+struct AddActivity_Preview: PreviewProvider {
     static var previews: some View {
-        ActicityScreen1(appState: AppState())
+        AddActivity(appState: AppState())
     }
 }

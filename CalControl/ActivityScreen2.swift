@@ -11,12 +11,33 @@ struct ActivityScreen2:View{
     @ObservedObject var appState: AppState
     @State var activityTime = Date.now
     
-    @State private var selection: String?
-    let names = ["John", "Jane", "Tom", "Lucy", "Anna"]
+    @State private var selected_intensivity: String = ""
+
+    var intensivity: [String] {
+        appState.intensivity.map { $0.0 }
+        }
     
+    @State private var selected_activity: String = ""
     
-    var friuts = ["apple", "banana", "orange", "kiwi"]
-       @State private var selectedFruit: String = "banana"
+    var activities: [String] {
+        appState.intensivity.map { $0.0 }
+        }
+    
+    var calculated_kcal: Int = 0
+    
+    func calculate_kcal(kcal_per_hour: Int, interval: Date, intense: Float) -> Int {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: interval)
+        let minute = calendar.component(.minute, from: interval)
+        
+        let totalTimeInHours = Float(hour) + (Float(minute) / 60.0)
+        
+        let kcalBurned = Int(Float(kcal_per_hour) * intense * totalTimeInHours)
+        
+        return kcalBurned
+    }
+    
+    var current_activity = 0;
     
     var body: some View {
         
@@ -36,10 +57,7 @@ struct ActivityScreen2:View{
                                 .foregroundColor(.white)
                                 .padding()
                         }
-                        
-                        
-                        
-                        
+
                         
                         HStack{
                             Text("Activity")
@@ -48,9 +66,9 @@ struct ActivityScreen2:View{
                                 .foregroundColor(.white)
                                 .padding()
                             VStack {
-                                Picker("fruits", selection: $selectedFruit) {
-                                    ForEach(friuts, id: \.self) { fruit in
-                                        Text(fruit)
+                                Picker("intensivity", selection: $selected_intensivity) {
+                                    ForEach(intensivity, id: \.self) { intens in
+                                        Text(intens)
                                             .foregroundColor(.white)
                                     }
                                 }.background(Color.white.opacity(0.2))
@@ -80,9 +98,9 @@ struct ActivityScreen2:View{
                             .foregroundColor(.white)
                             .padding()
                         VStack {
-                            Picker("fruits", selection: $selectedFruit) {
-                                ForEach(friuts, id: \.self) { fruit in
-                                    Text(fruit)
+                            Picker("fruits", selection: $selected_activity) {
+                                ForEach(activities, id: \.self) { activ in
+                                    Text(activ)
                                 }
                             }.background(Color.white.opacity(0.2))
                                 .cornerRadius(15)
