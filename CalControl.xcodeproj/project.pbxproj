@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165037A2D01F3DE003C5741 /* MainMenuView.swift */; };
 		A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16503792D01F3DE003C5741 /* AddMealView.swift */; };
+		A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A165037D2D01FE46003C5741 /* loginSound.mp3 */; };
 		A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C987B2CF8CA6A008A4681 /* AppState.swift */; };
 		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
@@ -46,6 +47,7 @@
 		A1346B962CF8D97600CD39A7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A16503792D01F3DE003C5741 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 		A165037A2D01F3DE003C5741 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		A165037D2D01FE46003C5741 /* loginSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loginSound.mp3; sourceTree = "<group>"; };
 		A16C987B2CF8CA6A008A4681 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		D7A762602CCA8F92008EFE6A /* CalControl */ = {
 			isa = PBXGroup;
 			children = (
+				A165037D2D01FE46003C5741 /* loginSound.mp3 */,
 				A1346B962CF8D97600CD39A7 /* FileManager.swift */,
 				A1346B942CF8D96400CD39A7 /* Records.swift */,
 				A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */,
@@ -258,6 +261,7 @@
 			files = (
 				D7A762692CCA8F96008EFE6A /* Preview Assets.xcassets in Resources */,
 				D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */,
+				A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
