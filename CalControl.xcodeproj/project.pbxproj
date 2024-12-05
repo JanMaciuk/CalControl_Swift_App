@@ -10,6 +10,8 @@
 		A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165037A2D01F3DE003C5741 /* MainMenuView.swift */; };
 		A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16503792D01F3DE003C5741 /* AddMealView.swift */; };
 		A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A165037D2D01FE46003C5741 /* loginSound.mp3 */; };
+		A165037F2D020C0C003C5741 /* ActivityScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1346B902CF8C03200CD39A7 /* ActivityScreen2.swift */; };
+		A16503802D020CA1003C5741 /* ActivityScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */; };
 		A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C987B2CF8CA6A008A4681 /* AppState.swift */; };
 		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
@@ -288,11 +290,13 @@
 			files = (
 				A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */,
 				A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */,
+				A16503802D020CA1003C5741 /* ActivityScreen1.swift in Sources */,
 				A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */,
 				A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */,
 				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
 				A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */,
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
+				A165037F2D020C0C003C5741 /* ActivityScreen2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
