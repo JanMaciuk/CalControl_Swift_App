@@ -1,8 +1,4 @@
 import SwiftUI
-import AVFoundation
-let filePath = Bundle.main.path(forResource: "loginSound.mp3", ofType:nil)!
-let fileUrl = URL(fileURLWithPath: filePath)
-var bombSoundEffect: AVAudioPlayer?
 
 struct SetupScreenView2: View {
     
@@ -91,7 +87,7 @@ struct SetupScreenView2: View {
                     
                     VStack {
                         // Option 2: Maintain weight
-                        Text("⊖")
+                        Text("⊜")
                             .foregroundColor(.white)
                             .font(.system(size: 70, weight: .semibold))
                             .padding(.bottom, 20)
@@ -146,7 +142,9 @@ struct SetupScreenView2: View {
                 
                 Spacer()
                 Button(action: {
-                    willMoveToNextScreen = true  // Set flag to true to trigger navigate()
+                    if (appState.weightGoal != nil ) {
+                        willMoveToNextScreen = true  // Set flag to true to trigger navigate()
+                    }
                 }) {
                     Text("Continue")
                         .font(.headline)
@@ -160,25 +158,14 @@ struct SetupScreenView2: View {
                 Spacer()
             }
         }.onAppear {
-            playSound();
             updateBMIRange();  // Call the function when the view first appears
             
-        }}.navigate(to: MainMenuView(appState: appState), when: $willMoveToNextScreen)
+        }}.navigate(to: LoadingView(appState: appState), when: $willMoveToNextScreen)
     }
 }
 
 struct SetupScreenView2_Previews: PreviewProvider {
     static var previews: some View {
         SetupScreenView2(appState: AppState())
-    }
-}
-
-
-func playSound() {
-    do {
-        bombSoundEffect = try AVAudioPlayer(contentsOf: fileUrl)
-        bombSoundEffect?.play()
-    } catch {
-        // couldn't load file :(
     }
 }

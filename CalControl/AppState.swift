@@ -38,20 +38,13 @@ class AppState: ObservableObject {
 
 
     func calculateBMI() {
-        print("Started calculate BMI")
         // Ensure height and weight are non-nil before calculating BMI
         guard let weight = weight, let height = height else {
             self.bmi = 0.0  // Default to 0 if either height or weight is nil
             return
         }
-        print("Guard Passed")
-        
-
         let heightInMeters = Float(height) / 100.0
-        
-
         self.bmi = Float(weight) / (heightInMeters * heightInMeters)
-        print(bmi)
     }
     
     func resetKcalories(){

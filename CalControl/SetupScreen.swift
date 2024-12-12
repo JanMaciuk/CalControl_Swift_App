@@ -151,7 +151,7 @@ struct SetupScreenView: View {
             
 
             Button(action: {
-                if (appState.username != "" && appState.height != nil && appState.weight != nil) {
+                if (appState.username != "" && appState.height != nil && appState.weight != nil && appState.selectedGender != nil) {
                     appState.calculateBMI()
                     willMoveToNextScreen = true  // Set flag to true to trigger navigate()
                 }

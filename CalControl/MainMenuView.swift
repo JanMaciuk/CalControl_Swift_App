@@ -29,7 +29,7 @@ struct MainMenuView: View {
                             MenuOptionView(title: "Manage dreams")
                         }
                         
-                        NavigationLink(destination: ActivityScreen1(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                        NavigationLink(destination: ActicityScreen1(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage activity")
                         }
                         

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ActivityScreen1: View {
+struct ActicityScreen1: View {
     @ObservedObject var appState: AppState
     var body: some View {
         NavigationView {
