@@ -2,6 +2,13 @@ import SwiftUI
 
 struct ActicityScreen1: View {
     @ObservedObject var appState: AppState
+    
+    func formattedTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -42,14 +49,23 @@ struct ActicityScreen1: View {
                 ScrollViewReader { proxy in
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            ForEach(0..<100, id: \.self) { i in
-                                Text("Example \(i)")
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(i % 2 == 0 ? Color.white.opacity(0.9) : Color.clear)
-                                    .cornerRadius(8)
-                                    .id(i)
+                            ForEach(0..<appState.today_activity.count, id: \.self) { i in
+                                HStack {
+                                    Text(appState.today_activity[i].activity)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    Text("\(appState.today_activity[i].kcal) kcal")
+                                        .frame(maxWidth: .infinity, alignment: .center)
+
+                                    Text(formattedTime(appState.today_activity[i].interval))
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                                .padding()
+                                .background(Color.white.opacity(0.9))
+                                .cornerRadius(8)
+                                .id(i)
                             }
+
                         }
                         .padding(.horizontal)
                     }
@@ -58,7 +74,7 @@ struct ActicityScreen1: View {
                 
 
                 NavigationLink(
-                    destination: ActivityScreen2(appState: appState),
+                    destination: ActivityScreen2(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
                     label: {
                         Text("Add new activity")
                             .padding()
@@ -69,8 +85,7 @@ struct ActicityScreen1: View {
                             .font(.system(size: 20, weight: .semibold))
                     }
                 )
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
+
                 
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))

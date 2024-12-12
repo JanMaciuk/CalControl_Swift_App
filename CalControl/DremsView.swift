@@ -75,7 +75,7 @@ struct DreamsView:View{
                 .font(.system(size: 24, weight: .bold))
                 Spacer()
                 NavigationLink(
-                    destination: MainMenuView(appState: appState),
+                    destination: MainMenuView(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
                     label: {
                         Text("Add")
                             .padding()
@@ -86,6 +86,7 @@ struct DreamsView:View{
                             .font(.system(size: 20, weight: .semibold))
                     }
                 )
+                    
                 
                 Divider()
                 
@@ -100,7 +101,8 @@ struct DreamsView:View{
                 
             }
             .background(Color.black)
-        }
+        }.background(Color.black.edgesIgnoringSafeArea(.all))
+            .navigationBarHidden(true)
     }
     
 }

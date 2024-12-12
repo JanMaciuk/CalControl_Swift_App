@@ -67,7 +67,7 @@ struct AddActivity: View {
                 Spacer()
 
                 NavigationLink(
-                    destination: ActicityScreen1(appState: appState),
+                    destination: ActicityScreen1(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
                     label: {
                         Text("Add new activity")
                             .padding()
@@ -78,12 +78,10 @@ struct AddActivity: View {
                             .font(.system(size: 20, weight: .semibold))
                     }
                 )
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
                 
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
-        }.navigationBarHidden(true)
+        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
     }
 }
 
