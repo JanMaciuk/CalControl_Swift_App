@@ -25,24 +25,34 @@ class AppState: ObservableObject {
     
     init() {
         self.today_activity = [
-            (activity: "running", interval: createDateWithTime(hour: 1, minute: 20), kcal: 201),
-            (activity: "cycling", interval: createDateWithTime(hour: 0, minute: 30), kcal: 123),
-            (activity: "other", interval: createDateWithTime(hour: 1, minute: 15), kcal: 201),
-            (activity: "other2", interval: createDateWithTime(hour: 2, minute: 52), kcal: 201),
-            
+            (activity: "Running", interval: createDateWithTime(hour: 1, minute: 20), kcal: 201),
+            (activity: "Cycling", interval: createDateWithTime(hour: 0, minute: 30), kcal: 123),
+            (activity: "Other", interval: createDateWithTime(hour: 1, minute: 15), kcal: 201),
+            (activity: "Other2", interval: createDateWithTime(hour: 2, minute: 52), kcal: 201)
         ]
+//        sortActivities()
     }
     
     // Kuba G 2:
     @Published var kcal_consumed: Int = 0
     
-//    
-//    func sortedActivities() -> [(String, Date, Int)] {
-//        today_activity.sort($0.interval < $1.interval)
+    
+//    func sortActivities() {
+//        today_activity.sort { $0.interval < $1.interval }
 //    }
-    
-    
-    
+//
+//
+//
+//    func addActivity(activity: String, interval: Date, kcal: Int) {
+//        today_activity.append((activity: activity, interval: interval, kcal: kcal))
+//        sortActivities()
+//    }
+//    
+//    func removeActivity(at index: Int) {
+//        today_activity.remove(at: index)
+//        sortActivities()
+//    }
+//    
 
     func calculateBMI() {
         print("Started calculate BMI")

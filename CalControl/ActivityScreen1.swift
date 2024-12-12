@@ -50,13 +50,22 @@ struct ActicityScreen1: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
                             ForEach(0..<appState.today_activity.count, id: \.self) { i in
-                                Text("\(appState.today_activity[i].activity) | \(appState.today_activity[i].kcal) kcal | \(formattedTime(appState.today_activity[i].interval))")
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(Color.white.opacity(0.9) )
-                                    .cornerRadius(8)
-                                    .id(i)
+                                HStack {
+                                    Text(appState.today_activity[i].activity)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    Text("\(appState.today_activity[i].kcal) kcal")
+                                        .frame(maxWidth: .infinity, alignment: .center)
+
+                                    Text(formattedTime(appState.today_activity[i].interval))
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                                .padding()
+                                .background(Color.white.opacity(0.9))
+                                .cornerRadius(8)
+                                .id(i)
                             }
+
                         }
                         .padding(.horizontal)
                     }
