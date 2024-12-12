@@ -1,6 +1,7 @@
 import SwiftUI
 
 class AppState: ObservableObject {
+
     // Janek:
     @Published var username: String = ""
     @Published var birthDate = Date()
@@ -12,10 +13,27 @@ class AppState: ObservableObject {
     @Published var weightGoal: String? = nil
     
     // Kuba 1:
+    @Published var kcal_burned: Int = 0
+    @Published var kcal_change_date: Date? = nil
+    @Published var intensivity = [
+        ("high",1),
+        ("medium", 0.75),
+        ("low",0.5)
+    ]
+    @Published var today_activity: [(activity: String, interval: Date, kcal: Int)] = []
+
     
+    init() {
+        self.today_activity = [
+            (activity: "running", interval: createDateWithTime(hour: 1, minute: 20), kcal: 201),
+            (activity: "cycling", interval: createDateWithTime(hour: 0, minute: 30), kcal: 123),
+            (activity: "other", interval: createDateWithTime(hour: 1, minute: 15), kcal: 201),
+            (activity: "other2", interval: createDateWithTime(hour: 2, minute: 52), kcal: 201)
+        ]
+    }
     
-    // Kuba 2:
-    
+    // Kuba G 2:
+    @Published var kcal_consumed: Int = 0
     
 
 
@@ -34,8 +52,46 @@ class AppState: ObservableObject {
 
         self.bmi = Float(weight) / (heightInMeters * heightInMeters)
         print(bmi)
-
     }
+    
+    func resetKcalories(){
+        //reset kcalories at the end of the day
+        
+        if(kcal_change_date != nil){
+            let kcal_date_tmp: Date = kcal_change_date ?? Date()
+            let calendar = Calendar.current
+            
+            let components1 = calendar.dateComponents([.year, .month, .day], from: kcal_date_tmp)
+            let components2 = calendar.dateComponents([.year, .month, .day], from: Date())
+            
+            guard let normalizedDate1 = calendar.date(from: components1),
+                  let normalizedDate2 = calendar.date(from: components2) else {
+                return
+            }
+            if(normalizedDate1 != normalizedDate2){
+                kcal_burned = 0
+            }
+        }
+        
+    }
+    
+    func createDateWithTime(hour: Int, minute: Int) -> Date {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: currentDate)
+        
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        dateComponents.second = 0
+        
+        if let dateWithTime = calendar.date(from: dateComponents) {
+            return dateWithTime
+        } else {
+            return currentDate
+        }
+    }
+    
 }
 
 extension View {

@@ -26,12 +26,13 @@ struct ActicityScreen1: View {
                 }
                 Divider()
                 
-                Text("Burned kcal:")
+                Text("Burned kcal: \(appState.kcal_burned)")
                     .foregroundColor(.white)
                     .font(.system(size: 32, weight: .semibold))
                     .padding(.top)
                 
-                // TODO add kcal global variables
+
+                
                 Spacer()
                 Text("My activity today:")
                     .foregroundColor(.white)
@@ -57,7 +58,7 @@ struct ActicityScreen1: View {
                 
 
                 NavigationLink(
-                    destination: MainMenuView(appState: appState),
+                    destination: ActivityScreen2(appState: appState),
                     label: {
                         Text("Add new activity")
                             .padding()
@@ -68,9 +69,12 @@ struct ActicityScreen1: View {
                             .font(.system(size: 20, weight: .semibold))
                     }
                 )
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
                 
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
+            .navigationBarHidden(true)
         }
     }
 }

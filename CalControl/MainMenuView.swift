@@ -25,8 +25,14 @@ struct MainMenuView: View {
                     Spacer()
 
                     VStack(alignment: .leading, spacing: 35) {
-                        MenuOptionView(title: "Manage dreams")
-                        MenuOptionView(title: "Manage activity")
+                        NavigationLink(destination: DreamsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                            MenuOptionView(title: "Manage dreams")
+                        }
+                        
+                        NavigationLink(destination: ActicityScreen1(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                            MenuOptionView(title: "Manage activity")
+                        }
+                        
                         
                         Button(action: {
                             showWeightPopup.toggle()
@@ -51,15 +57,15 @@ struct MainMenuView: View {
 
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Text("Kcal consumed:       x")
+                            Text("Kcal consumed:       \(appState.kcal_burned)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {
-                            Text("Kcal burned:             x")
+                            Text("Kcal burned:             \(appState.kcal_consumed)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {
-                            Text("Total balance:           x")
+                            Text("Total balance:            \(appState.kcal_burned-appState.kcal_consumed)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
