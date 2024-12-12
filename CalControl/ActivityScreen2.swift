@@ -131,7 +131,7 @@ struct ActivityScreen2:View{
                         //TODO photo here
                     }
                     NavigationLink(
-                        destination: MainMenuView(appState: appState),
+                        destination: MainMenuView(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
                         label: {
                             Text("Add")
                                 .padding()
@@ -152,7 +152,7 @@ struct ActivityScreen2:View{
                     Spacer()
                     
                     NavigationLink(
-                        destination: AddActivity(appState: appState),
+                        destination: AddActivity(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
                         label: {
                             Text("Add custom activity ")
                                 .padding()
