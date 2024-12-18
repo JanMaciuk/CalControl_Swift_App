@@ -36,6 +36,10 @@ struct ActivityScreen2: View {
         let intensityMultiplier: Float = Float(appState.intensivity[intensityIndex].1)
         calculated_kcal = calculate_kcal(kcal_per_hour: kcal_per_hour, interval: activityTime, intense: intensityMultiplier)
     }
+    
+    func updateAppState(){
+        appState.today_activity.append((activity: selected_activity, interval: activityTime, kcal: calculated_kcal))
+    }
 
     var body: some View {
         NavigationView {
@@ -145,7 +149,10 @@ struct ActivityScreen2: View {
                             .frame(width: UIScreen.main.bounds.width * 0.8)
                             .font(.system(size: 20, weight: .semibold))
                     }
-                )
+                    
+                ).simultaneousGesture(TapGesture().onEnded {
+                    updateAppState()
+                })
                 
                 Spacer()
                 Divider()
