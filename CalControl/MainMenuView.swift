@@ -32,7 +32,7 @@ struct MainMenuView: View {
                         NavigationLink(destination: ActicityScreen1(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage activity")
                         }
-                        
+           
                         
                         Button(action: {
                             showWeightPopup.toggle()

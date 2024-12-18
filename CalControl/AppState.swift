@@ -20,6 +20,15 @@ class AppState: ObservableObject {
         ("medium", 0.75),
         ("low",0.5)
     ]
+    @Published var activity: [(activity:String, kcal_per_hour: Int)] = [
+        (activity:"Running",kcal_per_hour:200),
+        (activity:"Cycling",kcal_per_hour:260),
+        (activity:"Waking",kcal_per_hour:100),
+        (activity:"Swimming",kcal_per_hour:400),
+        (activity:"Gym", kcal_per_hour:450),
+        (activity:"Studing",kcal_per_hour:250)
+    ]
+    
     @Published var today_activity: [(activity: String, interval: Date, kcal: Int)] = []
 
     
@@ -30,29 +39,12 @@ class AppState: ObservableObject {
             (activity: "Other", interval: createDateWithTime(hour: 1, minute: 15), kcal: 201),
             (activity: "Other2", interval: createDateWithTime(hour: 2, minute: 52), kcal: 201)
         ]
-//        sortActivities()
     }
     
     // Kuba G 2:
     @Published var kcal_consumed: Int = 0
     
-    
-//    func sortActivities() {
-//        today_activity.sort { $0.interval < $1.interval }
-//    }
-//
-//
-//
-//    func addActivity(activity: String, interval: Date, kcal: Int) {
-//        today_activity.append((activity: activity, interval: interval, kcal: kcal))
-//        sortActivities()
-//    }
-//    
-//    func removeActivity(at index: Int) {
-//        today_activity.remove(at: index)
-//        sortActivities()
-//    }
-//    
+      
 
     func calculateBMI() {
         // Ensure height and weight are non-nil before calculating BMI
