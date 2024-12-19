@@ -57,11 +57,11 @@ struct MainMenuView: View {
 
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Text("Kcal consumed:       \(appState.kcal_burned)")
+                            Text("Kcal consumed:       \(appState.kcal_consumed)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {
-                            Text("Kcal burned:             \(appState.kcal_consumed)")
+                            Text("Kcal burned:             \(appState.kcal_burned)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {

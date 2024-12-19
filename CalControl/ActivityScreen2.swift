@@ -7,6 +7,8 @@ struct ActivityScreen2: View {
     @State private var selected_activity: String = ""
     @State private var calculated_kcal: Int = 0
     
+    @State private var showAlert = false
+    @State private var isLinkActive = false    
     var intensivity: [String] {
         appState.intensivity.map { $0.0 }
     }
@@ -37,17 +39,19 @@ struct ActivityScreen2: View {
         calculated_kcal = calculate_kcal(kcal_per_hour: kcal_per_hour, interval: activityTime, intense: intensityMultiplier)
     }
     
-    func updateAppState(){
+    func updateAppState() {
         appState.today_activity.append((activity: selected_activity, interval: activityTime, kcal: calculated_kcal))
+        appState.kcal_burned += calculated_kcal
     }
 
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
-                    NavigationLink(destination: MainMenuView(appState: appState)
+                    
+                    NavigationLink(destination: ActicityScreen1(appState: appState)
                         .navigationBarBackButtonHidden(true)
-                        .navigationBarHidden(true)) {
+                        .navigationBarHidden(true), isActive: $isLinkActive) {
                         ChevronLeftView().padding(.top)
                     }
                     
@@ -66,8 +70,8 @@ struct ActivityScreen2: View {
                         .padding()
                     VStack {
                         Picker("activity", selection: $selected_activity) {
-                            ForEach(activities, id: \.self) { intens in
-                                Text(intens)
+                            ForEach(activities, id: \.self) { activity in
+                                Text(activity)
                                     .foregroundColor(.white)
                             }
                         }
@@ -103,8 +107,8 @@ struct ActivityScreen2: View {
                         .padding()
                     VStack {
                         Picker("intensivity", selection: $selected_intensivity) {
-                            ForEach(intensivity, id: \.self) { activ in
-                                Text(activ)
+                            ForEach(intensivity, id: \.self) { intensity in
+                                Text(intensity)
                                     .foregroundColor(.white)
                             }
                         }
@@ -137,22 +141,31 @@ struct ActivityScreen2: View {
                         }
                     }
                 }
-
-                NavigationLink(
-                    destination: MainMenuView(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
-                    label: {
-                        Text("Add")
-                            .padding()
-                            .background(.white)
-                            .foregroundColor(.black)
-                            .clipShape(Capsule())
-                            .frame(width: UIScreen.main.bounds.width * 0.8)
-                            .font(.system(size: 20, weight: .semibold))
+                
+                Button(action: {
+                    if isValidData() {
+                        updateAppState()
+                        isLinkActive = true
+                    } else {
+                        showAlert = true
                     }
-                    
-                ).simultaneousGesture(TapGesture().onEnded {
-                    updateAppState()
-                })
+                }) {
+                    Text("Add")
+                        .padding()
+                        .background(isValidData() ? Color.white : Color.gray)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
+                        .frame(width: UIScreen.main.bounds.width * 0.8)
+                        .font(.system(size: 20, weight: .semibold))
+                }
+                .disabled(!isValidData())
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Missing Data"),
+                        message: Text("MissingData"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
                 
                 Spacer()
                 Divider()
@@ -179,6 +192,13 @@ struct ActivityScreen2: View {
             .background(Color.black)
         }
         .navigationBarHidden(true)
+    }
+    
+    private func isValidData() -> Bool {
+        if selected_intensivity.isEmpty || selected_activity.isEmpty || activityTime == Calendar.current.startOfDay(for: Date()) {
+            return false
+        }
+        return true
     }
 }
 
