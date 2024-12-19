@@ -8,7 +8,7 @@ struct MainMenuView: View {
         NavigationView {
             ZStack {
                 Color.black.edgesIgnoringSafeArea(.all)
-
+                
                 VStack {
                     HStack {
                         Image(systemName: "person.circle")
@@ -25,6 +25,7 @@ struct MainMenuView: View {
                     Spacer()
 
                     VStack(alignment: .leading, spacing: 35) {
+                        Text("Hello " + appState.username).foregroundColor(.white)
                         NavigationLink(destination: DreamsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage dreams")
                         }
@@ -43,6 +44,18 @@ struct MainMenuView: View {
                         NavigationLink(destination: AddMealView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage meals")
                         }
+                        Button(action: {
+                            appState.saveToUserDefaults()
+                        }) {
+                            Text("Save changes")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(30)  // Rounded corners
+                                .padding(.top, 30)  // Space from the options
+                        }
+                        .buttonStyle(PlainButtonStyle())  // Remove default button styling
                     }
                     .padding(.top, 20)
                     .padding(.horizontal)

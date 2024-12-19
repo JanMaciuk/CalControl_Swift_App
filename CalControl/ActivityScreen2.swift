@@ -3,7 +3,7 @@ import SwiftUI
 struct ActivityScreen2: View {
     @ObservedObject var appState: AppState
     @State var activityTime: Date = Calendar.current.startOfDay(for: Date())
-    @State private var selected_intensivity: String = ""
+    @State private var selected_intensivity: String = "medium"
     @State private var selected_activity: String = ""
     @State private var calculated_kcal: Int = 0
     
@@ -32,7 +32,7 @@ struct ActivityScreen2: View {
             return
         }
         
-        let kcal_per_hour = appState.activity[activityIndex].kcal_per_hour
+        let kcal_per_hour = appState.activity[activityIndex].1
         let intensityMultiplier: Float = Float(appState.intensivity[intensityIndex].1)
         calculated_kcal = calculate_kcal(kcal_per_hour: kcal_per_hour, interval: activityTime, intense: intensityMultiplier)
     }
