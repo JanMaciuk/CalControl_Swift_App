@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1501CF42D14802600FBD0D4 /* VideoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1501CF32D14802000FBD0D4 /* VideoPlayView.swift */; };
+		A1501CF82D14857B00FBD0D4 /* ExerciseTutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A1501CF72D14857B00FBD0D4 /* ExerciseTutorial.mp4 */; };
 		A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165037A2D01F3DE003C5741 /* MainMenuView.swift */; };
 		A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16503792D01F3DE003C5741 /* AddMealView.swift */; };
 		A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A165037D2D01FE46003C5741 /* loginSound.mp3 */; };
@@ -49,6 +51,8 @@
 		A1346B922CF8D93500CD39A7 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A1346B942CF8D96400CD39A7 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
 		A1346B962CF8D97600CD39A7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		A1501CF32D14802000FBD0D4 /* VideoPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayView.swift; sourceTree = "<group>"; };
+		A1501CF72D14857B00FBD0D4 /* ExerciseTutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExerciseTutorial.mp4; sourceTree = "<group>"; };
 		A16503792D01F3DE003C5741 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 		A165037A2D01F3DE003C5741 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		A165037D2D01FE46003C5741 /* loginSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loginSound.mp3; sourceTree = "<group>"; };
@@ -117,9 +121,11 @@
 		D7A762602CCA8F92008EFE6A /* CalControl */ = {
 			isa = PBXGroup;
 			children = (
+				A1501CF32D14802000FBD0D4 /* VideoPlayView.swift */,
 				A18C44572D0B4AE400BBA8EB /* LoadingAnimation.swift */,
 				A18DE76E2D02194D007A20BD /* AddActivity.swift */,
 				A165037D2D01FE46003C5741 /* loginSound.mp3 */,
+				A1501CF72D14857B00FBD0D4 /* ExerciseTutorial.mp4 */,
 				A1346B962CF8D97600CD39A7 /* FileManager.swift */,
 				A1346B942CF8D96400CD39A7 /* Records.swift */,
 				A1346B8E2CF8B93D00CD39A7 /* ActivityScreen1.swift */,
@@ -270,6 +276,7 @@
 				D7A762692CCA8F96008EFE6A /* Preview Assets.xcassets in Resources */,
 				D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */,
 				A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */,
+				A1501CF82D14857B00FBD0D4 /* ExerciseTutorial.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +311,7 @@
 				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
 				A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */,
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
+				A1501CF42D14802600FBD0D4 /* VideoPlayView.swift in Sources */,
 				A165037F2D020C0C003C5741 /* ActivityScreen2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
