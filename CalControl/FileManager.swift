@@ -1,4 +1,3 @@
-//
 import Foundation
 
 func saveRecordsToFile(records: Records, fileName: String) {

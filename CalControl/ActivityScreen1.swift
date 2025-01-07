@@ -1,4 +1,3 @@
-//
 import SwiftUI
 
 struct ActicityScreen1: View {
