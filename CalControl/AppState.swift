@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import Combine
+import UIKit
 
 extension AppState {
     // Save AppState to UserDefaults
@@ -35,6 +36,35 @@ extension AppState {
     }
 }
 
+struct Product: Identifiable, Codable {
+    let id = UUID()
+    let name: String
+    let imageName: String?
+    let kcalPer100g: Double
+    let proteinPer100g: Double
+    let carbsPer100g: Double
+    let fatPer100g: Double
+}
+
+struct EatenMeal: Identifiable, Codable {
+    let id = UUID()
+    let product: Product
+    let grams: Double
+    let dateEaten: Date
+    
+    var totalKcal: Double {
+        (grams / 100.0) * product.kcalPer100g
+    }
+    var totalProtein: Double {
+        (grams / 100.0) * product.proteinPer100g
+    }
+    var totalCarbs: Double {
+        (grams / 100.0) * product.carbsPer100g
+    }
+    var totalFat: Double {
+        (grams / 100.0) * product.fatPer100g
+    }
+}
 
 class AppState: ObservableObject, Codable {
     private var cancellables: Set<AnyCancellable> = []
@@ -45,6 +75,7 @@ class AppState: ObservableObject, Codable {
                     self.saveToUserDefaults()
                 }
                 .store(in: &cancellables)
+        dailyResetIfNeeded()
         }
 
     // Janek:
@@ -78,7 +109,72 @@ class AppState: ObservableObject, Codable {
 
     // Kuba G 2:
     @Published var kcal_consumed: Int = 0
+    @Published var allProducts: [Product] = [
+        Product(name: "Parówki (Berlinki)",
+                imageName: "parowki_berlinki",
+                kcalPer100g: 260, proteinPer100g: 11, carbsPer100g: 5, fatPer100g: 21),
+        Product(name: "Ryż",
+                imageName: "ryz",
+                kcalPer100g: 350, proteinPer100g: 7, carbsPer100g: 78, fatPer100g: 1),
+        Product(name: "Jabłko (Polskie)",
+                imageName: "jablko_polskie",
+                kcalPer100g: 52, proteinPer100g: 0.3, carbsPer100g: 14, fatPer100g: 0.2),
+        Product(name: "Masło (Łaciate)",
+                imageName: "maslo_laciate",
+                kcalPer100g: 720, proteinPer100g: 1, carbsPer100g: 0, fatPer100g: 81),
+        Product(name: "Pierś z kurczaka",
+                imageName: "piers_kurczaka",
+                kcalPer100g: 165, proteinPer100g: 31, carbsPer100g: 0, fatPer100g: 3.6),
+        Product(name: "Makaron (Barilla)",
+                imageName: "makaron_barilla",
+                kcalPer100g: 370, proteinPer100g: 13, carbsPer100g: 77, fatPer100g: 1.5),
+        Product(name: "Bułka pszenna",
+                imageName: "bulka_pszenna",
+                kcalPer100g: 280, proteinPer100g: 9, carbsPer100g: 57, fatPer100g: 2),
+        Product(name: "Chleb żytni",
+                imageName: "chleb_zytni",
+                kcalPer100g: 220, proteinPer100g: 6, carbsPer100g: 40, fatPer100g: 1.5),
+        Product(name: "Ser żółty (Gouda)",
+                imageName: "ser_zolty_gouda",
+                kcalPer100g: 350, proteinPer100g: 27, carbsPer100g: 2.2, fatPer100g: 26),
+        Product(name: "Szynka konserwowa (Krakus)",
+                imageName: "szynka_krakus",
+                kcalPer100g: 120, proteinPer100g: 18, carbsPer100g: 1, fatPer100g: 4),
+        Product(name: "Banany",
+                imageName: "banany",
+                kcalPer100g: 89, proteinPer100g: 1.1, carbsPer100g: 23, fatPer100g: 0.3),
+        Product(name: "Pomidor (Malinowy)",
+                imageName: "pomidor_malinowy",
+                kcalPer100g: 18, proteinPer100g: 0.9, carbsPer100g: 3.9, fatPer100g: 0.2),
+        Product(name: "Cebula",
+                imageName: "cebula",
+                kcalPer100g: 40, proteinPer100g: 1.1, carbsPer100g: 9, fatPer100g: 0.1),
+        Product(name: "Mleko 2% (Łaciate)",
+                imageName: "mleko_laciate",
+                kcalPer100g: 50, proteinPer100g: 3.4, carbsPer100g: 4.9, fatPer100g: 2),
+        Product(name: "Czekolada gorzka (Wedel 80%)",
+                imageName: "czekolada_wedel",
+                kcalPer100g: 520, proteinPer100g: 7, carbsPer100g: 46, fatPer100g: 35),
+        Product(name: "Orzechy włoskie",
+                imageName: "orzechy_wloskie",
+                kcalPer100g: 654, proteinPer100g: 15, carbsPer100g: 14, fatPer100g: 65),
+        Product(name: "Oliwa z oliwek (Monini)",
+                imageName: "oliwa_z_oliwek",
+                kcalPer100g: 884, proteinPer100g: 0, carbsPer100g: 0, fatPer100g: 100),
+        Product(name: "Ziemniaki",
+                imageName: "ziemniaki",
+                kcalPer100g: 80, proteinPer100g: 2, carbsPer100g: 17, fatPer100g: 0.1),
+        Product(name: "Makrela (Marinero)",
+                imageName: "makrela_marinero",
+                kcalPer100g: 195, proteinPer100g: 22, carbsPer100g: 5, fatPer100g: 12),
+        Product(name: "Serek wiejski (Piątnica)",
+                imageName: "serek_wiejski_piatnica",
+                kcalPer100g: 98, proteinPer100g: 11, carbsPer100g: 3, fatPer100g: 4)
+    ]
 
+    @Published var eatenMeals: [EatenMeal] = []
+    @Published var lastUpdateDate: Date? = nil
+    
     func calculateBMI() {
         guard let weight = weight, let height = height else {
             self.bmi = 0.0
@@ -86,6 +182,56 @@ class AppState: ObservableObject, Codable {
         }
         let heightInMeters = Float(height) / 100.0
         self.bmi = Float(weight) / (heightInMeters * heightInMeters)
+    }
+    
+    func dailyResetIfNeeded() {
+        let calendar = Calendar.current
+        let now = Date()
+            
+            
+        guard let lastDate = lastUpdateDate else {
+            lastUpdateDate = now
+            return
+        }
+            
+        let dayNow = calendar.dateComponents([.year, .month, .day], from: now)
+        let dayLast = calendar.dateComponents([.year, .month, .day], from: lastDate)
+            
+        if dayNow.year != dayLast.year || dayNow.month != dayLast.month || dayNow.day != dayLast.day {
+            kcal_burned = 0
+            kcal_consumed = 0
+            eatenMeals.removeAll()
+        }
+        lastUpdateDate = now
+    }
+    
+    func dailyGoalStatus() -> String {
+        let net = kcal_consumed - kcal_burned
+            
+        switch weightGoal {
+        case "Loose weight":
+            if net < 0 {
+                return "Good balance - losing weight"
+            } else {
+                return "Bad balance - gaining weight"
+            }
+        case "Maintain weight":
+            if abs(net) <= 200 {
+                return "Good balance - maintaining weight"
+            } else if net < 0 {
+                return "Bad balance - losing weight"
+            } else {
+                return "Bad balance - gaining weight"
+            }
+        case "Gain weight":
+            if net > 0 {
+                return "Good balance - gaining weight"
+            } else {
+                return "Bad balance - losing weight"
+            }
+        default:
+            return "-- no goal set --"
+        }
     }
     
     func resetKcalories() {
@@ -118,6 +264,8 @@ class AppState: ObservableObject, Codable {
     enum CodingKeys: String, CodingKey {
         case username, birthDate, height, weight, selectedGender, activityLevel, bmi, weightGoal
         case kcal_burned, kcal_change_date, intensivity, activity, today_activity, kcal_consumed
+        case allProducts, eatenMeals
+        
     }
 
     // MARK: - Encode and Decode
@@ -146,6 +294,9 @@ class AppState: ObservableObject, Codable {
         kcal_burned = try container.decode(Int.self, forKey: .kcal_burned)
         kcal_change_date = try container.decodeIfPresent(Date.self, forKey: .kcal_change_date)
         kcal_consumed = try container.decode(Int.self, forKey: .kcal_consumed)
+        
+        allProducts = try container.decodeIfPresent([Product].self, forKey: .allProducts) ?? []
+        eatenMeals = try container.decodeIfPresent([EatenMeal].self, forKey: .eatenMeals) ?? []
     }
 
     func encode(to encoder: Encoder) throws {
@@ -173,6 +324,9 @@ class AppState: ObservableObject, Codable {
         try container.encode(kcal_burned, forKey: .kcal_burned)
         try container.encodeIfPresent(kcal_change_date, forKey: .kcal_change_date)
         try container.encode(kcal_consumed, forKey: .kcal_consumed)
+        
+        try container.encode(allProducts, forKey: .allProducts)
+        try container.encode(eatenMeals, forKey: .eatenMeals)
     }
 }
 

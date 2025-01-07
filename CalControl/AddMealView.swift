@@ -2,117 +2,142 @@ import SwiftUI
 
 struct AddMealView: View {
     @ObservedObject var appState: AppState
-    @State private var selectedProducer = "Value"
-    @State private var gramsEaten = ""
-    @State private var optionalNotes = ""
-    @State private var showProducerPicker = false
+    let product: Product
+
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var gramsEaten: String = ""
+    @State private var optionalNotes: String = ""
+
+    var totalKcal: Double {
+        guard let grams = Double(gramsEaten) else { return 0 }
+        return (grams / 100.0) * product.kcalPer100g
+    }
+    var totalProtein: Double {
+        guard let grams = Double(gramsEaten) else { return 0 }
+        return (grams / 100.0) * product.proteinPer100g
+    }
+    var totalCarbs: Double {
+        guard let grams = Double(gramsEaten) else { return 0 }
+        return (grams / 100.0) * product.carbsPer100g
+    }
+    var totalFat: Double {
+        guard let grams = Double(gramsEaten) else { return 0 }
+        return (grams / 100.0) * product.fatPer100g
+    }
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.black.ignoresSafeArea()
+
             VStack(spacing: 20) {
                 HStack {
-                    NavigationLink(destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
-                        ChevronLeft()
+                    Button(action: {
+                        // Cofnij się w istniejącym stosie nawigacji
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding(.leading, 16)
                     }
                     Spacer()
                     Text("Add new meal")
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
+                    Spacer().frame(width: 30)
                 }
-                .padding(.horizontal)
+                .padding([.top, .horizontal], 10)
 
-                Spacer()
-
-                VStack(spacing: 8) {
-                    Text("Producer")
-                        .font(.system(size: 20))
+                Text("Product: \(product.name)")
+                    .font(.system(size: 20))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                HStack(spacing: 16) {
+                    if let imageName = product.imageName, !imageName.isEmpty {
+                        Image(imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 250, height: 250)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    } else {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 250, height: 250)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }
+                VStack(spacing: 10) {
+                    Text("Grams")
+                        .font(.system(size: 18))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    Button(action: {
-                        showProducerPicker.toggle()
-                    }) {
-                        HStack {
-                            Text(selectedProducer)
-                                .foregroundColor(.black)
-                                .padding(.leading)
-                            Spacer()
-                            Image(systemName: "chevron.down")
-                                .foregroundColor(.black)
-                                .padding(.trailing)
-                        }
+
+                    TextField("Enter grams", text: $gramsEaten)
+                        .keyboardType(.decimalPad)
+                        .padding()
                         .frame(height: 50)
                         .background(Color.white)
                         .cornerRadius(10)
-                    }
-                }
-
-                VStack(spacing: 8) {
-                    Text("Grams")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    HStack {
-                        TextField("Enter grams", text: $gramsEaten)
-                            .keyboardType(.decimalPad) // Klawiatura numeryczna
-                            .padding(.leading, 10)
-                            .frame(height: 50)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                    }
+                        .padding(.horizontal, 50)
                 }
 
                 VStack(spacing: 10) {
                     HStack {
-                        Text("Kcal:").fontWeight(.semibold)
+                        Text("Kcal:")
+                            .fontWeight(.semibold)
                         Spacer()
-                        Text("x")
+                        Text("\(Int(totalKcal))")
                     }
                     HStack {
-                        Text("Protein:").fontWeight(.semibold)
+                        Text("Protein:")
+                            .fontWeight(.semibold)
                         Spacer()
-                        Text("x")
+                        Text("\(Int(totalProtein)) g")
                     }
                     HStack {
-                        Text("Carbs:").fontWeight(.semibold)
+                        Text("Carbs:")
+                            .fontWeight(.semibold)
                         Spacer()
-                        Text("x")
+                        Text("\(Int(totalCarbs)) g")
                     }
                     HStack {
-                        Text("Fat:").fontWeight(.semibold)
+                        Text("Fat:")
+                            .fontWeight(.semibold)
                         Spacer()
-                        Text("x")
+                        Text("\(Int(totalFat)) g")
                     }
                 }
                 .font(.headline)
                 .foregroundColor(.white)
-                .padding(.horizontal)
+                .padding(.horizontal, 50)
 
-                Divider()
-                    .background(Color.white)
-
-                VStack(spacing: 8) {
+                VStack(spacing: 10) {
                     Text("Optional notes")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
+
                     TextEditor(text: $optionalNotes)
-                        .frame(height: 100)
+                        .frame(height: 80)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(10)
+                        .padding(.horizontal, 50)
                 }
 
                 Button(action: {
-                    // Add logic
+                    guard let gramsValue = Double(gramsEaten), gramsValue > 0 else { return }
+
+                    let newMeal = EatenMeal(
+                        product: product,
+                        grams: gramsValue,
+                        dateEaten: Date()
+                    )
+                    appState.eatenMeals.append(newMeal)
+                    appState.kcal_consumed += Int(newMeal.totalKcal)
                 }) {
                     Text("Add")
                         .fontWeight(.bold)
@@ -121,38 +146,14 @@ struct AddMealView: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(10)
+                        .padding(.horizontal, 50)
                 }
                 .padding(.top, 10)
 
-                Spacer(minLength: 30)
-            }
-            .padding(.horizontal, 20)
-            .background(Color.black.edgesIgnoringSafeArea(.all))
-            .navigationBarHidden(true)
-            .actionSheet(isPresented: $showProducerPicker) {
-                ActionSheet(
-                    title: Text("Choose a producer"),
-                    buttons: [
-                        .default(Text("Producer 1")) { selectedProducer = "Producer 1" },
-                        .default(Text("Producer 2")) { selectedProducer = "Producer 2" },
-                        .cancel()
-                    ]
-                )
+                Spacer()
             }
         }
-    }
-}
-
-struct ChevronLeft: View {
-    var body: some View {
-        Image(systemName: "chevron.left")
-            .font(.system(size: 30))
-            .foregroundColor(.white)
-    }
-}
-
-struct AddMealView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddMealView(appState: AppState())
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }

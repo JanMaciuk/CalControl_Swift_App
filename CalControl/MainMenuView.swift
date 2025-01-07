@@ -2,7 +2,9 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var appState: AppState
-    @State private var showWeightPopup = false
+    //@State private var showWeightPopup = false
+    @State private var showProfile = false
+    @State private var showSettings = false
 
     var body: some View {
         NavigationView {
@@ -11,15 +13,31 @@ struct MainMenuView: View {
                 
                 VStack {
                     HStack {
-                        Image(systemName: "person.circle")
-                            .font(.system(size: 46, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
+                        Button(action: {
+                            showProfile.toggle()
+                        }) {
+                            Image(systemName: "person.circle")
+                                .font(.system(size: 46, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        .sheet(isPresented: $showProfile) {
+                            UserProfileView(appState: appState)
+                        }
+
                         Spacer()
-                        Image(systemName: "gearshape")
-                            .font(.system(size: 46, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
+
+                        Button(action: {
+                            showSettings.toggle()
+                        }) {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 46, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        .sheet(isPresented: $showSettings) {
+                            UserSettingsView(appState: appState)
+                        }
                     }
 
                     Spacer()
@@ -35,13 +53,11 @@ struct MainMenuView: View {
                         }
            
                         
-                        Button(action: {
-                            showWeightPopup.toggle()
-                        }) {
-                            MenuOptionView(title: "Manage weight")
+                        NavigationLink(destination: TodayEatenMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                            MenuOptionView(title: "Today meals")
                         }
 
-                        NavigationLink(destination: AddMealView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                        NavigationLink(destination: ManageMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage meals")
                         }
                         Button(action: {
@@ -70,15 +86,15 @@ struct MainMenuView: View {
 
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Text("Kcal consumed:       \(appState.kcal_burned)")
+                            Text("Kcal consumed:        \(appState.kcal_consumed)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {
-                            Text("Kcal burned:             \(appState.kcal_consumed)")
+                            Text("Kcal burned:              \(appState.kcal_burned)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack {
-                            Text("Total balance:            \(appState.kcal_burned-appState.kcal_consumed)")
+                            Text("Total balance:            \(appState.kcal_consumed-appState.kcal_burned)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
@@ -89,96 +105,99 @@ struct MainMenuView: View {
 
                     Spacer()
 
-                    Text("--daily goal status--")
+                    Text(appState.dailyGoalStatus())
                         .foregroundColor(.white)
                         .font(.system(size: 18, weight: .semibold))
                         .padding(.bottom, 20)
                 }
 
-                if showWeightPopup {
-                    WeightPopupView(showPopup: $showWeightPopup)
-                        .transition(.opacity)
-                        .zIndex(1)
-                }
+//                if showWeightPopup {
+//                    WeightPopupView(showPopup: $showWeightPopup)
+//                        .transition(.opacity)
+//                        .zIndex(1)
+//                }
             }
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct WeightPopupView: View {
-    @Binding var showPopup: Bool
-    @State private var newWeight = ""
-
-    var body: some View {
-        ZStack {
-            Color.black.opacity(0.7).edgesIgnoringSafeArea(.all)
-
-            VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Button(action: {
-                        showPopup = false
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 30))
-                            .foregroundColor(.white)
-                    }
-                    Spacer()
-                }
-
-                HStack {
-                    Text("Last change:")
-                        .foregroundColor(.white)
-                    Spacer()
-                    Text("xx-xx-xxxx")
-                        .foregroundColor(.white)
-                }
-
-                HStack {
-                    Text("New weight:")
-                        .foregroundColor(.white)
-                    Spacer()
-                    TextField("Enter weight", text: $newWeight)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
-                        .padding(.leading, 10)
-                        .frame(maxWidth: 150)
-                }
-
-                HStack {
-                    Button(action: {
-                        // More logic
-                    }) {
-                        Text("More")
-                            .padding()
-                            .frame(maxWidth: 100)
-                            .background(Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    
-                    Spacer()
-
-                    Button(action: {
-                        // Apply logic
-                        showPopup = false
-                    }) {
-                        Text("Apply")
-                            .padding()
-                            .frame(maxWidth: 100)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                }
-            }
-            .padding()
-            .background(Color.gray)
-            .cornerRadius(15)
-            .padding(.horizontal, 30)
+        .onAppear {
+            appState.dailyResetIfNeeded()
         }
     }
 }
+
+//struct WeightPopupView: View {
+//    @Binding var showPopup: Bool
+//    @State private var newWeight = ""
+//
+//    var body: some View {
+//        ZStack {
+//            Color.black.opacity(0.7).edgesIgnoringSafeArea(.all)
+//
+//            VStack(alignment: .leading, spacing: 20) {
+//                HStack {
+//                    Button(action: {
+//                        showPopup = false
+//                    }) {
+//                        Image(systemName: "chevron.left")
+//                            .font(.system(size: 30))
+//                            .foregroundColor(.white)
+//                    }
+//                    Spacer()
+//                }
+//
+//                HStack {
+//                    Text("Last change:")
+//                        .foregroundColor(.white)
+//                    Spacer()
+//                    Text("xx-xx-xxxx")
+//                        .foregroundColor(.white)
+//                }
+//
+//                HStack {
+//                    Text("New weight:")
+//                        .foregroundColor(.white)
+//                    Spacer()
+//                    TextField("Enter weight", text: $newWeight)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.decimalPad)
+//                        .padding(.leading, 10)
+//                        .frame(maxWidth: 150)
+//                }
+//
+//                HStack {
+//                    Button(action: {
+//                        // More logic
+//                    }) {
+//                        Text("More")
+//                            .padding()
+//                            .frame(maxWidth: 100)
+//                            .background(Color.gray)
+//                            .foregroundColor(.white)
+//                            .cornerRadius(10)
+//                    }
+//
+//                    Spacer()
+//
+//                    Button(action: {
+//                        // Apply logic
+//                        showPopup = false
+//                    }) {
+//                        Text("Apply")
+//                            .padding()
+//                            .frame(maxWidth: 100)
+//                            .background(Color.blue)
+//                            .foregroundColor(.white)
+//                            .cornerRadius(10)
+//                    }
+//                }
+//            }
+//            .padding()
+//            .background(Color.gray)
+//            .cornerRadius(15)
+//            .padding(.horizontal, 30)
+//        }
+//    }
+//}
 
 struct MenuOptionView: View {
     var title: String

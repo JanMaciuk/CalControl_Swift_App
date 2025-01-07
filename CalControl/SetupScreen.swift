@@ -1,6 +1,5 @@
+//
 import SwiftUI
-
-
 
 struct SetupScreenView: View {
     @ObservedObject var appState = AppState()
