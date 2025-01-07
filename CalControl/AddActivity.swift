@@ -20,15 +20,13 @@ struct AddActivity: View {
     }
     
     func updateAppState() {
-        print((activity_name, kcal_per_hour))
-        print("xd")
         appState.activity.append((activity: activity_name, kcal_per_hour: kcal_per_hour))
+//        print("Activity added: \(activity_name), kcal per hour: \(kcal_per_hour)")
     }
 
     var body: some View {
         NavigationView {
             VStack {
-                
                 HStack {
                     NavigationLink(destination: ActivityScreen2(appState: appState)
                                     .navigationBarBackButtonHidden(true)
@@ -54,14 +52,12 @@ struct AddActivity: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .center)
                     
-                    HStack {
-                        TextField("Activity name", text: $activity_name)
-                            .padding(.leading, 10)
-                            .frame(height: 50)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
+                    TextField("Activity name", text: $activity_name)
+                        .padding(.leading, 10)
+                        .frame(height: 50)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 
                 VStack {
@@ -71,15 +67,13 @@ struct AddActivity: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .center)
                     
-                    HStack {
-                        TextField("Kcal per hour", value: $kcal_per_hour, formatter: numberFormatter)
-                            .keyboardType(.numberPad)
-                            .padding(.leading, 10)
-                            .frame(height: 50)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
+                    TextField("Kcal per hour", value: $kcal_per_hour, formatter: numberFormatter)
+                        .keyboardType(.numberPad)
+                        .padding(.leading, 10)
+                        .frame(height: 50)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 
                 Spacer()
@@ -96,14 +90,13 @@ struct AddActivity: View {
                             .frame(width: UIScreen.main.bounds.width * 0.8)
                             .font(.system(size: 20, weight: .semibold))
                     }
-                ).disabled(!isFormValid)
-                    .onTapGesture {
-                        if !isFormValid {
-                            updateAppState()
-                        }
+                )
+                .disabled(!isFormValid)
+                .onChange(of: isLinkActive) { newValue in
+                    if newValue {
+                        updateAppState()
                     }
-                
-                
+                }
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
         }
