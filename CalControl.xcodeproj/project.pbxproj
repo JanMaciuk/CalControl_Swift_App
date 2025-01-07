@@ -20,6 +20,10 @@
 		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
 		A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */; };
+		D771CBEF2D2C3C2400B74A8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771CBEE2D2C3C2400B74A8E /* SettingsView.swift */; };
+		D771CBF12D2C3CA400B74A8E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771CBF02D2C3CA400B74A8E /* ProfileView.swift */; };
+		D771CBF32D2C446300B74A8E /* ManageMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771CBF22D2C446300B74A8E /* ManageMealsView.swift */; };
+		D771CBF52D2C4F8100B74A8E /* TodayEatenMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771CBF42D2C4F8100B74A8E /* TodayEatenMealsView.swift */; };
 		D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A762612CCA8F92008EFE6A /* CalControlApp.swift */; };
 		D7A762662CCA8F96008EFE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762652CCA8F96008EFE6A /* Assets.xcassets */; };
 		D7A762692CCA8F96008EFE6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A762682CCA8F96008EFE6A /* Preview Assets.xcassets */; };
@@ -62,6 +66,10 @@
 		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
 		A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen2.swift; sourceTree = "<group>"; };
+		D771CBEE2D2C3C2400B74A8E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D771CBF02D2C3CA400B74A8E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D771CBF22D2C446300B74A8E /* ManageMealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMealsView.swift; sourceTree = "<group>"; };
+		D771CBF42D2C4F8100B74A8E /* TodayEatenMealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEatenMealsView.swift; sourceTree = "<group>"; };
 		D7A7625E2CCA8F92008EFE6A /* CalControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A762612CCA8F92008EFE6A /* CalControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalControlApp.swift; sourceTree = "<group>"; };
 		D7A762652CCA8F96008EFE6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +148,10 @@
 				A165037A2D01F3DE003C5741 /* MainMenuView.swift */,
 				D7A762652CCA8F96008EFE6A /* Assets.xcassets */,
 				D7A762672CCA8F96008EFE6A /* Preview Content */,
+				D771CBEE2D2C3C2400B74A8E /* SettingsView.swift */,
+				D771CBF02D2C3CA400B74A8E /* ProfileView.swift */,
+				D771CBF22D2C446300B74A8E /* ManageMealsView.swift */,
+				D771CBF42D2C4F8100B74A8E /* TodayEatenMealsView.swift */,
 			);
 			path = CalControl;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 				A18DE76F2D021952007A20BD /* AddActivity.swift in Sources */,
 				A16503802D020CA1003C5741 /* ActivityScreen1.swift in Sources */,
 				A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */,
+				D771CBF32D2C446300B74A8E /* ManageMealsView.swift in Sources */,
 				A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */,
 				A18C44582D0B4AEA00BBA8EB /* LoadingAnimation.swift in Sources */,
 				A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */,
@@ -313,6 +326,9 @@
 				D7A762622CCA8F92008EFE6A /* CalControlApp.swift in Sources */,
 				A1501CF42D14802600FBD0D4 /* VideoPlayView.swift in Sources */,
 				A165037F2D020C0C003C5741 /* ActivityScreen2.swift in Sources */,
+				D771CBF12D2C3CA400B74A8E /* ProfileView.swift in Sources */,
+				D771CBEF2D2C3C2400B74A8E /* SettingsView.swift in Sources */,
+				D771CBF52D2C4F8100B74A8E /* TodayEatenMealsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
