@@ -62,7 +62,7 @@ struct ActicityScreen1: View {
                                 }
                                 .padding()
                                 .background(Color.white.opacity(0.9))
-                                .cornerRadius(8)
+                                .cornerRadius(10)
                                 .id(i)
                             }
 

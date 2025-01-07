@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct DreamsView: View {
     @ObservedObject var appState: AppState
     @State var wakeUp = Date.now
@@ -22,7 +23,7 @@ struct DreamsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView { // Owijamy całą zawartość w ScrollView
+            ScrollView {
                 VStack {
                     ZStack {
                         NavigationLink(destination: MainMenuView(appState: appState).navigationBarBackButtonHidden(true)
@@ -38,7 +39,6 @@ struct DreamsView: View {
                         Spacer()
                     }
 
-                    // TODO bed logo/icon
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 40, height: 40)
@@ -153,20 +153,44 @@ struct DreamsView: View {
                             .font(.system(size: 20, weight: .semibold))
                             .padding(.bottom, 20)
                     } else {
-                        List(appState.sleep_history, id: \.went) { sleepRecord in
-                            VStack(alignment: .leading) {
-                                Text("Sleep: \(sleepRecord.interval.0) hours \(sleepRecord.interval.1) minutes")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 18, weight: .regular))
-                                Text("From: \(sleepRecord.went, formatter: dateFormatter) to: \(sleepRecord.wake, formatter: dateFormatter)")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .regular))
+                        ScrollViewReader { proxy in
+                            ScrollView(.vertical, showsIndicators: false) {
+                                VStack {
+                                    ForEach(0..<appState.sleep_history.count, id: \.self) { i in
+                                        HStack {
+                                            Text("Sleep: \(appState.sleep_history[i].interval.0) hours \(appState.sleep_history[i].interval.1) minutes")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 18, weight: .regular))
+                                            
+                                            Text("From: \(appState.sleep_history[i].went, formatter: dateFormatter) to: \(appState.sleep_history[i].wake, formatter: dateFormatter)")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 16, weight: .regular))
+                                        }
+                                        .padding()
+                                        .background(Color.white.opacity(0.1))
+                                        .cornerRadius(30)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(.white, lineWidth: 4)
+                                        )
+//                                        .overlay(RoundedRectangle(cornerRadius: 30, style: .white, lineWidth:2))
+//                                        .border(.white)
+                                        .id(i)
+                                    }
+                                }
+                                .padding()
                             }
-                            .padding()
+                            .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+                            .onChange(of: appState.sleep_history.count) { _ in
+                                if let lastIndex = appState.sleep_history.indices.last {
+                                    withAnimation {
+                                        proxy.scrollTo(lastIndex, anchor: .bottom)
+                                    }
+                                }
+                            }
                         }
-                        .background(Color.black)
-                        .cornerRadius(10)
                     }
+
                 }
                 .background(Color.black)
             }
@@ -175,6 +199,7 @@ struct DreamsView: View {
         }
     }
 }
+
 
 struct DreamsView_Preview: PreviewProvider {
     static var previews: some View {
