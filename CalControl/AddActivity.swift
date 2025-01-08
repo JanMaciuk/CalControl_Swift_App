@@ -21,7 +21,6 @@ struct AddActivity: View {
     
     func updateAppState() {
         appState.activity.append((activity: activity_name, kcal_per_hour: kcal_per_hour))
-//        print("Activity added: \(activity_name), kcal per hour: \(kcal_per_hour)")
     }
 
     var body: some View {

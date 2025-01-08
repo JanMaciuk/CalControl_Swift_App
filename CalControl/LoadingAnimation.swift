@@ -2,7 +2,7 @@ import SwiftUI
 import AVFoundation
 let filePath = Bundle.main.path(forResource: "loginSound.mp3", ofType:nil)!
 let fileUrl = URL(fileURLWithPath: filePath)
-var bombSoundEffect: AVAudioPlayer?
+var soundEffect: AVAudioPlayer?
 
 struct LoadingView: View {
     @ObservedObject var appState: AppState
@@ -40,9 +40,9 @@ struct LoadinAnimation_Previews: PreviewProvider {
 
 func playSound() {
     do {
-        bombSoundEffect = try AVAudioPlayer(contentsOf: fileUrl)
-        bombSoundEffect?.play()
+        soundEffect = try AVAudioPlayer(contentsOf: fileUrl)
+        soundEffect?.play()
     } catch {
-        // couldn't load file :(
+        print("couldn't play audio file")
     }
 }

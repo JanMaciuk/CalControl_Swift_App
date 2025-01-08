@@ -110,18 +110,6 @@ struct UserSettingsView: View {
                             .background(Color.blue)
                             .cornerRadius(10)
                     }
-
-//                    Button(action: {
-//                        // format action
-//                    }) {
-//                        Text("Format")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color.red)
-//                            .cornerRadius(10)
-//                    }
                 }
                 .padding()
             }

@@ -103,7 +103,7 @@ struct ManageMealsView: View {
                 Spacer()
             }
         }
-        // Ukrywamy systemowy pasek nawigacji (jeśli chcesz)
+        // Ukrywamy systemowy pasek nawigacji
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }

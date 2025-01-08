@@ -151,10 +151,10 @@ struct SetupScreenView2: View {
                         .foregroundColor(.black)
                         .padding()
                         .background(Color.white)
-                        .cornerRadius(30)  // Rounded corners
-                        .padding(.top, 30)  // Space from the options
+                        .cornerRadius(30)
+                        .padding(.top, 30)
                 }
-                .buttonStyle(PlainButtonStyle())  // Remove default button styling
+                .buttonStyle(PlainButtonStyle())
                 Spacer()
             }
         }.onAppear {

@@ -3,7 +3,7 @@ import SwiftUI
 struct MainMenuView: View {
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all) // Background color
+            Color.black.edgesIgnoringSafeArea(.all)
 
             VStack {
                 HStack {
@@ -19,7 +19,6 @@ struct MainMenuView: View {
                 }
                 
                 Spacer()
-                //Spacer()
                 
                 VStack(alignment: .leading, spacing: 35) {
                     MenuOptionView(title: "Manage dreams")

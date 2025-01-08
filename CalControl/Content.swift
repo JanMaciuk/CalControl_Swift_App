@@ -16,7 +16,7 @@ struct Content: View {
                 let newRecord = Record(text: inputText)
                 records.addRecord(newRecord)
                 saveRecordsToFile(records: records, fileName: fileName)
-                inputText = ""  // Czyszczenie pola tekstowego
+                inputText = ""
             }
             .padding()
             .background(Color.blue)

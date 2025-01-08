@@ -36,7 +36,6 @@ struct SetupScreenView: View {
                 .padding(.bottom, 20)
             HStack {
                 Spacer()
-                // Female symbol
                 Text("♀")
                     .foregroundColor(.white)
                     .font(.system(size: 70, weight: .semibold))
@@ -52,10 +51,8 @@ struct SetupScreenView: View {
                             appState.selectedGender = "Female"
                         }
                     }
-                // End female symbol
                 Spacer()
                 
-                // Male symbol
                 Text("♂")
                     .foregroundColor(.white)
                     .font(.system(size: 70, weight: .semibold))
@@ -71,7 +68,6 @@ struct SetupScreenView: View {
                             appState.selectedGender = "Male"
                         }
                     }
-                // End male symbol
                 Spacer()
             }
             
@@ -159,13 +155,12 @@ struct SetupScreenView: View {
                     .foregroundColor(.black)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(30)  // Rounded corners
-                    .padding(.top, 30)  // Space from the options
+                    .cornerRadius(30)
+                    .padding(.top, 30)
             }
-            .buttonStyle(PlainButtonStyle())  // Remove default button styling
+            .buttonStyle(PlainButtonStyle())
                         
             
-            //End of view
             Spacer()
                 
             }}.navigate(to: SetupScreenView2(appState: appState), when: $willMoveToNextScreen)

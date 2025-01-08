@@ -4,7 +4,7 @@ import AVKit
 struct ExerciseTutorialView: View {
     @ObservedObject var appState: AppState
     @State private var willMoveToNextScreen = false
-    @Environment(\.presentationMode) var presentationMode  // To handle the back action
+    @Environment(\.presentationMode) var presentationMode
     
     let player = AVPlayer(url: Bundle.main.url(forResource: "ExerciseTutorial", withExtension: "mp4")!)
     let playerViewController = AVPlayerViewController()
@@ -17,7 +17,6 @@ struct ExerciseTutorialView: View {
     
     var body: some View {
         VStack {
-            // Embed the video player
             VideoPlayer(player: player)
                 .onAppear {
                     player.play()  // Play the video as soon as the view appears
@@ -38,14 +37,14 @@ struct ExerciseTutorialView: View {
                     .foregroundColor(.black)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(30)  // Rounded corners
-                    .padding(.top, 30)  // Space from the options
+                    .cornerRadius(30)
+                    .padding(.top, 30)
             }
-            .buttonStyle(PlainButtonStyle())  // Remove default button styling
+            .buttonStyle(PlainButtonStyle())
             
         }
-        .background(Color.black)  // Black background
-        .edgesIgnoringSafeArea(.all)  // Full screen
+        .background(Color.black)
+        .edgesIgnoringSafeArea(.all)
         .navigate(to: MainMenuView(appState: appState), when: $willMoveToNextScreen)
         
     }

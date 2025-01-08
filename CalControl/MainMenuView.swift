@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var appState: AppState
-    //@State private var showWeightPopup = false
     @State private var showProfile = false
     @State private var showSettings = false
 
@@ -111,12 +110,6 @@ struct MainMenuView: View {
                         .font(.system(size: 18, weight: .semibold))
                         .padding(.bottom, 20)
                 }
-
-//                if showWeightPopup {
-//                    WeightPopupView(showPopup: $showWeightPopup)
-//                        .transition(.opacity)
-//                        .zIndex(1)
-//                }
             }
             .navigationBarHidden(true)
         }
@@ -125,80 +118,6 @@ struct MainMenuView: View {
         }
     }
 }
-
-//struct WeightPopupView: View {
-//    @Binding var showPopup: Bool
-//    @State private var newWeight = ""
-//
-//    var body: some View {
-//        ZStack {
-//            Color.black.opacity(0.7).edgesIgnoringSafeArea(.all)
-//
-//            VStack(alignment: .leading, spacing: 20) {
-//                HStack {
-//                    Button(action: {
-//                        showPopup = false
-//                    }) {
-//                        Image(systemName: "chevron.left")
-//                            .font(.system(size: 30))
-//                            .foregroundColor(.white)
-//                    }
-//                    Spacer()
-//                }
-//
-//                HStack {
-//                    Text("Last change:")
-//                        .foregroundColor(.white)
-//                    Spacer()
-//                    Text("xx-xx-xxxx")
-//                        .foregroundColor(.white)
-//                }
-//
-//                HStack {
-//                    Text("New weight:")
-//                        .foregroundColor(.white)
-//                    Spacer()
-//                    TextField("Enter weight", text: $newWeight)
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.decimalPad)
-//                        .padding(.leading, 10)
-//                        .frame(maxWidth: 150)
-//                }
-//
-//                HStack {
-//                    Button(action: {
-//                        // More logic
-//                    }) {
-//                        Text("More")
-//                            .padding()
-//                            .frame(maxWidth: 100)
-//                            .background(Color.gray)
-//                            .foregroundColor(.white)
-//                            .cornerRadius(10)
-//                    }
-//
-//                    Spacer()
-//
-//                    Button(action: {
-//                        // Apply logic
-//                        showPopup = false
-//                    }) {
-//                        Text("Apply")
-//                            .padding()
-//                            .frame(maxWidth: 100)
-//                            .background(Color.blue)
-//                            .foregroundColor(.white)
-//                            .cornerRadius(10)
-//                    }
-//                }
-//            }
-//            .padding()
-//            .background(Color.gray)
-//            .cornerRadius(15)
-//            .padding(.horizontal, 30)
-//        }
-//    }
-//}
 
 struct MenuOptionView: View {
     var title: String

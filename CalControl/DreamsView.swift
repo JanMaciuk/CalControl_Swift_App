@@ -173,8 +173,6 @@ struct DreamsView: View {
                                             RoundedRectangle(cornerRadius: 30)
                                                 .stroke(.white, lineWidth: 4)
                                         )
-//                                        .overlay(RoundedRectangle(cornerRadius: 30, style: .white, lineWidth:2))
-//                                        .border(.white)
                                         .id(i)
                                     }
                                 }
