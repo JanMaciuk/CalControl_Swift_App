@@ -106,7 +106,19 @@ class AppState: ObservableObject, Codable {
     ]
     
     @Published var today_activity: [(activity: String, interval: Date, kcal: Int)] = []
+    
+    @Published var sleep_history: [(went:Date,wake:Date,interval:(Int,Int))] = []
 
+    
+//    init() {
+//        self.today_activity = [
+//            (activity: "Running", interval: createDateWithTime(hour: 1, minute: 20), kcal: 201),
+//            (activity: "Cycling", interval: createDateWithTime(hour: 0, minute: 30), kcal: 123),
+//            (activity: "Other", interval: createDateWithTime(hour: 1, minute: 15), kcal: 201),
+//            (activity: "Other2", interval: createDateWithTime(hour: 2, minute: 52), kcal: 201)
+//        ]
+//    }
+//    
     // Kuba G 2:
     @Published var kcal_consumed: Int = 0
     @Published var allProducts: [Product] = [
