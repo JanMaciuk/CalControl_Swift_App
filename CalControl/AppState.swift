@@ -272,29 +272,28 @@ class AppState: ObservableObject, Codable {
         return calendar.date(from: dateComponents) ?? currentDate
     }
     
-    // MARK: - Codable Support
+    //AppState Codable Keys
     enum CodingKeys: String, CodingKey {
         case username, birthDate, height, weight, selectedGender, activityLevel, bmi, weightGoal
         case kcal_burned, kcal_change_date, intensivity, activity, today_activity, kcal_consumed
-        case allProducts, eatenMeals
-        
+        case allProducts, eatenMeals, sleep_history
     }
 
-    // MARK: - Encode and Decode
+    //Decode
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        // Decode the structured data (as structs)
+        // Decode structured data
         let decodedIntensivity = try container.decode([Intensity].self, forKey: .intensivity)
         let decodedActivity = try container.decode([Activity].self, forKey: .activity)
         let decodedTodayActivity = try container.decode([TodayActivity].self, forKey: .today_activity)
 
-        // Convert structs back to tuples
+        // Convert back to tuples
         self.intensivity = decodedIntensivity.map { ($0.intensity, $0.multiplier) }
         self.activity = decodedActivity.map { ($0.activity, $0.kcal_per_hour) }
         self.today_activity = decodedTodayActivity.map { ($0.activity, $0.interval, $0.kcal) }
 
-        // Other properties
+        // Decode other properties
         username = try container.decode(String.self, forKey: .username)
         birthDate = try container.decode(Date.self, forKey: .birthDate)
         height = try container.decodeIfPresent(Int.self, forKey: .height)
@@ -306,20 +305,22 @@ class AppState: ObservableObject, Codable {
         kcal_burned = try container.decode(Int.self, forKey: .kcal_burned)
         kcal_change_date = try container.decodeIfPresent(Date.self, forKey: .kcal_change_date)
         kcal_consumed = try container.decode(Int.self, forKey: .kcal_consumed)
-        
+
         allProducts = try container.decodeIfPresent([Product].self, forKey: .allProducts) ?? []
         eatenMeals = try container.decodeIfPresent([EatenMeal].self, forKey: .eatenMeals) ?? []
+        sleep_history = try container.decodeIfPresent([(went: Date, wake: Date, interval: (Int, Int))].self, forKey: .sleep_history) ?? []
     }
 
+    //Encode
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        // Convert tuples back to structs for encoding
+
+        // Convert tuples to structs for encoding
         let intensivityForEncoding = intensivity.map { Intensity(intensity: $0.0, multiplier: $0.1) }
         let activityForEncoding = activity.map { Activity(activity: $0.0, kcal_per_hour: $0.1) }
         let todayActivityForEncoding = today_activity.map { TodayActivity(activity: $0.activity, interval: $0.interval, kcal: $0.kcal) }
 
-        // Encode the structured data (as structs)
+        // Encode structured data
         try container.encode(intensivityForEncoding, forKey: .intensivity)
         try container.encode(activityForEncoding, forKey: .activity)
         try container.encode(todayActivityForEncoding, forKey: .today_activity)
@@ -336,10 +337,11 @@ class AppState: ObservableObject, Codable {
         try container.encode(kcal_burned, forKey: .kcal_burned)
         try container.encodeIfPresent(kcal_change_date, forKey: .kcal_change_date)
         try container.encode(kcal_consumed, forKey: .kcal_consumed)
-        
         try container.encode(allProducts, forKey: .allProducts)
         try container.encode(eatenMeals, forKey: .eatenMeals)
+        try container.encode(sleep_history, forKey: .sleep_history)
     }
+
 }
 
 // Structs for custom encoding/decoding
@@ -358,8 +360,6 @@ struct TodayActivity: Codable {
     let interval: Date
     let kcal: Int
 }
-
-
 
 
 

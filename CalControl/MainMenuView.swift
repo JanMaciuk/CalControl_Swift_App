@@ -62,16 +62,17 @@ struct MainMenuView: View {
                         }
                         Button(action: {
                             appState.saveToUserDefaults()
+                            exit(0)
                         }) {
-                            Text("Save changes")
+                            Text("Quit the app")
                                 .font(.headline)
                                 .foregroundColor(.black)
                                 .padding()
                                 .background(Color.white)
-                                .cornerRadius(30)  // Rounded corners
-                                .padding(.top, 30)  // Space from the options
+                                .cornerRadius(30)
+                                .padding(.top, 30)
                         }
-                        .buttonStyle(PlainButtonStyle())  // Remove default button styling
+                        .buttonStyle(PlainButtonStyle())
                     }
                     .padding(.top, 20)
                     .padding(.horizontal)
