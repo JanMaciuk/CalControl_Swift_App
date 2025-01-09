@@ -4,7 +4,7 @@ struct AddActivity: View {
     @ObservedObject var appState: AppState
     @State private var activity_name = ""
     @State private var kcal_per_hour = 0
-    
+    @Environment(\.presentationMode) var presentationMode
     @State private var isLinkActive = false
     
     let numberFormatter: NumberFormatter = {
@@ -27,10 +27,13 @@ struct AddActivity: View {
         NavigationView {
             VStack {
                 HStack {
-                    NavigationLink(destination: ActivityScreen2(appState: appState)
-                                    .navigationBarBackButtonHidden(true)
-                                    .navigationBarHidden(true), isActive: $isLinkActive) {
-                        ChevronLeft()
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding(.leading, 16)
                     }
                     Spacer()
                     Text("Add custom activity")
