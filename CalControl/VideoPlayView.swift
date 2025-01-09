@@ -10,7 +10,6 @@ struct ExerciseTutorialView: View {
     let playerViewController = AVPlayerViewController()
     
     init(appState: AppState) {
-        // Initialize the player with the video URL
         playerViewController.player = player
         self.appState = appState;
     }
@@ -19,18 +18,17 @@ struct ExerciseTutorialView: View {
         VStack {
             VideoPlayer(player: player)
                 .onAppear {
-                    player.play()  // Play the video as soon as the view appears
+                    player.play()
                 }
                 .onDisappear {
-                    player.pause()  // Pause the video when the view disappears
+                    player.pause()
                 }
                 .edgesIgnoringSafeArea(.top)
             
             Spacer()
             
-            // Back button at the bottom
             Button(action: {
-                    willMoveToNextScreen = true  // Set flag to true to trigger navigate()
+                    willMoveToNextScreen = true
             }) {
                 Text("Go back")
                     .font(.headline)
@@ -45,7 +43,7 @@ struct ExerciseTutorialView: View {
         }
         .background(Color.black)
         .edgesIgnoringSafeArea(.all)
-        .navigate(to: MainMenuView(appState: appState), when: $willMoveToNextScreen)
+        .navigate(to: ActivityScreen2(appState: appState), when: $willMoveToNextScreen)
         
     }
 }
