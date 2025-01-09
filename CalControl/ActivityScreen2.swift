@@ -8,7 +8,8 @@ struct ActivityScreen2: View {
     @State private var calculated_kcal: Int = 0
     
     @State private var showAlert = false
-    @State private var isLinkActive = false    
+    @State private var isLinkActive = false
+    @State private var isLinkExampleActive = false
     var intensivity: [String] {
         appState.intensivity.map { $0.0 }
     }
@@ -42,6 +43,10 @@ struct ActivityScreen2: View {
     func updateAppState() {
         appState.today_activity.append((activity: selected_activity, interval: activityTime, kcal: calculated_kcal))
         appState.kcal_burned += calculated_kcal
+    }
+    
+    private var isUserChoseActivity: Bool {
+        return selected_activity != "";
     }
 
     var body: some View {
@@ -119,6 +124,22 @@ struct ActivityScreen2: View {
                         .cornerRadius(15)
                     }
                 }
+                HStack{
+                    NavigationLink(
+                        destination: ExerciseTutorialView(appState: appState).navigationBarHidden(true).navigationBarBackButtonHidden(true),
+                        isActive: $isLinkExampleActive,
+                        label: {
+                            Text("Watch activity")
+                                .padding()
+                                .background(.white)
+                                .foregroundColor(.black)
+                                .clipShape(Capsule())
+                                .frame(width: UIScreen.main.bounds.width * 0.8)
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                    ).disabled(!isUserChoseActivity)
+                }
+                
                 
                 HStack {
                     VStack {
