@@ -107,7 +107,7 @@ class AppState: ObservableObject, Codable {
     
     @Published var today_activity: [(activity: String, interval: Date, kcal: Int)] = []
     
-    @Published var sleep_history: [(went:Date,wake:Date,interval:(Int,Int))] = []
+    @Published var sleep_history: [SleepHistory] = []
     
     // Kuba G 2:
     @Published var kcal_consumed: Int = 0
@@ -262,6 +262,18 @@ class AppState: ObservableObject, Codable {
         return calendar.date(from: dateComponents) ?? currentDate
     }
     
+    struct SleepHistory: Codable {
+        let went: Date
+        let wake: Date
+        let interval: TimeInterval
+
+        init(went: Date, wake: Date) {
+            self.went = went
+            self.wake = wake
+            self.interval = wake.timeIntervalSince(went)
+        }
+    }
+    
     //AppState Codable Keys
     enum CodingKeys: String, CodingKey {
         case username, birthDate, height, weight, selectedGender, activityLevel, bmi, weightGoal
@@ -298,7 +310,7 @@ class AppState: ObservableObject, Codable {
 
         allProducts = try container.decodeIfPresent([Product].self, forKey: .allProducts) ?? []
         eatenMeals = try container.decodeIfPresent([EatenMeal].self, forKey: .eatenMeals) ?? []
-        sleep_history = try container.decodeIfPresent([(went: Date, wake: Date, interval: (Int, Int))].self, forKey: .sleep_history) ?? []
+        self.sleep_history = try container.decodeIfPresent([SleepHistory].self, forKey: .sleep_history) ?? []
     }
 
     //Encode
