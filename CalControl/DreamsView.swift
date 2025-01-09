@@ -16,8 +16,9 @@ struct DreamsView: View {
     
     func updateAppState() {
         if (wakeUp > wentSleep){
-            let difference = Calendar.current.dateComponents([.hour, .minute], from: wentSleep, to: wakeUp)
-            appState.sleep_history.append((went: wentSleep, wake: wakeUp, interval: (difference.hour ?? 0, difference.minute ?? 0)))
+            let sleepEntry = AppState.SleepHistory(went: wentSleep, wake: wakeUp)
+            appState.sleep_history.append(sleepEntry)
+
         }
     }
     
@@ -47,7 +48,9 @@ struct DreamsView: View {
                             .padding()
 
                         if let lastSleep = appState.sleep_history.last {
-                            Text("You sleep: \(lastSleep.interval.0) h \(lastSleep.interval.1) min")
+                            let hours = Int(lastSleep.interval) / 3600
+                            let minutes = (Int(lastSleep.interval) % 3600) / 60
+                            Text("You sleep: \(hours) h \(minutes) min")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.system(size: 24, weight: .bold))
                                 .foregroundColor(.white)
