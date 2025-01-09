@@ -161,7 +161,10 @@ struct DreamsView: View {
                                 VStack {
                                     ForEach(0..<appState.sleep_history.count, id: \.self) { i in
                                         HStack {
-                                            Text("Sleep: \(appState.sleep_history[i].interval.0) hours \(appState.sleep_history[i].interval.1) minutes")
+                                            let lastSleep = appState.sleep_history[i]
+                                            let hours = Int(lastSleep.interval) / 3600
+                                            let minutes = (Int(lastSleep.interval) % 3600) / 60
+                                            Text("You sleep: \(hours) h \(minutes) min")
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 18, weight: .regular))
                                             
