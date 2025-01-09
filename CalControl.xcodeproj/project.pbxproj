@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A1501CF42D14802600FBD0D4 /* VideoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1501CF32D14802000FBD0D4 /* VideoPlayView.swift */; };
 		A1501CF82D14857B00FBD0D4 /* ExerciseTutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A1501CF72D14857B00FBD0D4 /* ExerciseTutorial.mp4 */; };
+		A15F990A2D3032110039B253 /* DreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F99092D3032110039B253 /* DreamsView.swift */; };
 		A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165037A2D01F3DE003C5741 /* MainMenuView.swift */; };
 		A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16503792D01F3DE003C5741 /* AddMealView.swift */; };
 		A165037E2D01FE46003C5741 /* loginSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A165037D2D01FE46003C5741 /* loginSound.mp3 */; };
@@ -17,7 +18,6 @@
 		A16C987C2CF8CA6E008A4681 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C987B2CF8CA6A008A4681 /* AppState.swift */; };
 		A18C44582D0B4AEA00BBA8EB /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18C44572D0B4AE400BBA8EB /* LoadingAnimation.swift */; };
 		A18DE76F2D021952007A20BD /* AddActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DE76E2D02194D007A20BD /* AddActivity.swift */; };
-		A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3212CEF7AE4000677C7 /* DremsView.swift */; };
 		A19DB3242CEF7AF2000677C7 /* SetupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */; };
 		A19DB3262CEF91B1000677C7 /* SetupScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */; };
 		D771CBEF2D2C3C2400B74A8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771CBEE2D2C3C2400B74A8E /* SettingsView.swift */; };
@@ -57,13 +57,13 @@
 		A1346B962CF8D97600CD39A7 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A1501CF32D14802000FBD0D4 /* VideoPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayView.swift; sourceTree = "<group>"; };
 		A1501CF72D14857B00FBD0D4 /* ExerciseTutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExerciseTutorial.mp4; sourceTree = "<group>"; };
+		A15F99092D3032110039B253 /* DreamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamsView.swift; sourceTree = "<group>"; };
 		A16503792D01F3DE003C5741 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 		A165037A2D01F3DE003C5741 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		A165037D2D01FE46003C5741 /* loginSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loginSound.mp3; sourceTree = "<group>"; };
 		A16C987B2CF8CA6A008A4681 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A18C44572D0B4AE400BBA8EB /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		A18DE76E2D02194D007A20BD /* AddActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivity.swift; sourceTree = "<group>"; };
-		A19DB3212CEF7AE4000677C7 /* DremsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DremsView.swift; path = CalControl/DremsView.swift; sourceTree = SOURCE_ROOT; };
 		A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen.swift; sourceTree = "<group>"; };
 		A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScreen2.swift; sourceTree = "<group>"; };
 		D771CBEE2D2C3C2400B74A8E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 				A16C987B2CF8CA6A008A4681 /* AppState.swift */,
 				A19DB3252CEF91A2000677C7 /* SetupScreen2.swift */,
 				A19DB3232CEF7AF2000677C7 /* SetupScreen.swift */,
-				A19DB3212CEF7AE4000677C7 /* DremsView.swift */,
 				D7A762612CCA8F92008EFE6A /* CalControlApp.swift */,
+				A15F99092D3032110039B253 /* DreamsView.swift */,
 				A16503792D01F3DE003C5741 /* AddMealView.swift */,
 				A165037A2D01F3DE003C5741 /* MainMenuView.swift */,
 				D7A762652CCA8F96008EFE6A /* Assets.xcassets */,
@@ -313,9 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19DB3222CEF7AE4000677C7 /* DremsView.swift in Sources */,
 				A165037B2D01F3DE003C5741 /* MainMenuView.swift in Sources */,
 				A18DE76F2D021952007A20BD /* AddActivity.swift in Sources */,
+				A15F990A2D3032110039B253 /* DreamsView.swift in Sources */,
 				A16503802D020CA1003C5741 /* ActivityScreen1.swift in Sources */,
 				A165037C2D01F3DE003C5741 /* AddMealView.swift in Sources */,
 				D771CBF32D2C446300B74A8E /* ManageMealsView.swift in Sources */,
