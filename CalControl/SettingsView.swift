@@ -33,48 +33,44 @@ struct UserSettingsView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Username")
                                 .foregroundColor(.white)
-                                .bold()
+                                .font(.headline)
                             TextField("Enter username", text: $tempUsername)
                                 .padding()
-                                .background(Color.white.opacity(0.1))
+                                .background(Color.white.opacity(0.9))
                                 .cornerRadius(8)
-                                .foregroundColor(.white)
                         }
 
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Birth Date")
                                 .foregroundColor(.white)
-                                .bold()
+                                .font(.headline)
                             DatePicker("", selection: $tempBirthDate, displayedComponents: .date)
                                 .labelsHidden()
                                 .datePickerStyle(WheelDatePickerStyle())
-                                .background(Color.white.opacity(0.1))
+                                .background(Color.white.opacity(0.9))
                                 .cornerRadius(8)
-                                .foregroundColor(.white)
                         }
 
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Height (cm)")
                                 .foregroundColor(.white)
-                                .bold()
+                                .font(.headline)
                             TextField(tempHeight != nil ? "\(tempHeight!)" : "Enter height", value: $tempHeight, formatter: NumberFormatter())
                                 .keyboardType(.numberPad)
                                 .padding()
-                                .background(Color.white.opacity(0.1))
+                                .background(Color.white.opacity(0.9))
                                 .cornerRadius(8)
-                                .foregroundColor(.white)
                         }
 
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Weight (kg)")
                                 .foregroundColor(.white)
-                                .bold()
+                                .font(.headline)
                             TextField(tempWeight != nil ? "\(tempWeight!)" : "Enter weight", value: $tempWeight, formatter: NumberFormatter())
                                 .keyboardType(.numberPad)
                                 .padding()
-                                .background(Color.white.opacity(0.1))
+                                .background(Color.white.opacity(0.9))
                                 .cornerRadius(8)
-                                .foregroundColor(.white)
                         }
 
                         VStack(alignment: .leading, spacing: 10) {
