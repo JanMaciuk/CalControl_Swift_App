@@ -49,7 +49,7 @@ struct MainMenuView: View {
                         
                         NavigationLink(destination: ActicityScreen1(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage activity")
-                        }
+                        }.accessibilityIdentifier("mainMenuViewManageActivity")
            
                         
                         NavigationLink(destination: TodayEatenMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {

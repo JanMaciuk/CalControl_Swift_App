@@ -77,6 +77,14 @@ class AppState: ObservableObject, Codable {
                 .store(in: &cancellables)
         dailyResetIfNeeded()
         }
+    
+    init(username: String = "", weight: Int = 0, height: Int = 0, bmi: Float = 0.0) {
+        self.username = username
+        self.weight = weight
+        self.height = height
+        self.bmi = bmi
+    }
+
 
     // Janek:
     @Published var username: String = ""

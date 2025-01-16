@@ -34,6 +34,7 @@ struct SetupScreenView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .semibold))
                 .padding(.bottom, 20)
+            
             HStack {
                 Spacer()
                 Text("♀")
@@ -51,6 +52,7 @@ struct SetupScreenView: View {
                             appState.selectedGender = "Female"
                         }
                     }
+                    .accessibilityIdentifier("setupScreen♀")
                 Spacer()
                 
                 Text("♂")
@@ -68,6 +70,7 @@ struct SetupScreenView: View {
                             appState.selectedGender = "Male"
                         }
                     }
+                    .accessibilityIdentifier("setupScreen♂")
                 Spacer()
             }
             
@@ -84,6 +87,7 @@ struct SetupScreenView: View {
                 .foregroundColor(.black).background(.white)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .cornerRadius(15)
+                .accessibilityIdentifier("setupScreenUsername")
             }
             Spacer()
             VStack(alignment: .leading, spacing: 2) {
@@ -95,6 +99,7 @@ struct SetupScreenView: View {
                     selection: $appState.birthDate,
                     displayedComponents: .date
                 ).background(.white).foregroundColor(.gray).cornerRadius(15)
+                    .accessibilityIdentifier("setupScreenBirthday")
             }
             Spacer()
             VStack(alignment: .leading, spacing: 2) {
@@ -105,7 +110,7 @@ struct SetupScreenView: View {
                     "Your height in cm",
                     value: $appState.height,
                     formatter: numberFormatter
-                )
+                ).accessibilityIdentifier("setupScreenHeight")
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: appState.height) { newValue in
@@ -124,6 +129,7 @@ struct SetupScreenView: View {
                     value: $appState.weight,
                     formatter: numberFormatter
                 )
+                .accessibilityIdentifier("setupScreenWeight")
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: appState.weight) { newValue in
@@ -139,7 +145,7 @@ struct SetupScreenView: View {
                     .font(.system(size: 16, weight: .semibold))
                 Picker("Select an option", selection: $appState.activityLevel) {
                     ForEach(activityLevels, id: \.self) { option in Text(option) }
-                }.background(.white).cornerRadius(15)
+                }.background(.white).cornerRadius(15).accessibilityIdentifier("setupScreenActivity")
             }
             Spacer()
             
@@ -158,6 +164,7 @@ struct SetupScreenView: View {
                     .cornerRadius(30)
                     .padding(.top, 30)
             }
+            .accessibilityIdentifier("setupScreenContinue")
             .buttonStyle(PlainButtonStyle())
                         
             

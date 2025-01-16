@@ -44,6 +44,7 @@ struct SetupScreenView2: View {
                     .font(.system(size: 28, weight: .bold))
                     .padding(.bottom, 20)
                     .multilineTextAlignment(.center)
+                    .accessibilityIdentifier("SetupScreen2BMI")
                 Text("( " + bmiRanges[bmiRangeIndex] + " )")
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .semibold))

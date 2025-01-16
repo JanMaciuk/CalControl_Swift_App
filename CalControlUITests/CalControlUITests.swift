@@ -9,34 +9,89 @@ import XCTest
 
 class CalControlUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
+    func testCheckAllUiFiledsSetupScreen(){
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        XCTAssert(app.textFields["setupScreenHeight"].waitForExistence(timeout: 1))
+        XCTAssert(app.textFields["setupScreenUsername"].waitForExistence(timeout: 1))
+        XCTAssert(app.datePickers["setupScreenBirthday"].waitForExistence(timeout: 1))
+        XCTAssert(app.buttons["setupScreenContinue"].waitForExistence(timeout: 1))
+        XCTAssert(app.textFields["setupScreenWeight"].waitForExistence(timeout: 1))
     }
+    
+    func testBMITest(){
+        let app = XCUIApplication()
+        app.launch()
+        
+        XCTAssert(app.textFields["setupScreenUsername"].waitForExistence(timeout: 5))
+        
+        
+        let gender = app.staticTexts["setupScreen♀"]
+        gender.tap()
+        
+        
+        let name = app.textFields["setupScreenUsername"]
+        name.tap()
+        name.typeText("tmp name")
+        
+        let height = app.textFields["setupScreenHeight"]
+        height.tap()
+        height.typeText("170")
+        
+        let weight = app.textFields["setupScreenWeight"]
+        weight.tap()
+        weight.typeText("70")
+        
+        let continueButton = app.buttons["setupScreenContinue"]
+        continueButton.tap()
+        
+        XCTAssert(app.staticTexts["SetupScreen2BMI"].waitForExistence(timeout: 0.5))
+        
+        let bmi = app.staticTexts["SetupScreen2BMI"].label
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        XCTAssertEqual(bmi,"\(String(format: "%.6f",70/(1.7*1.7)))")
     }
+        
+    func testKcalAddActivites(){
+        let app = XCUIApplication()
+        app.launchArguments.append("--skip-onboarding")
+        app.launch()
+        XCTAssert(app.buttons["mainMenuViewManageActivity"].waitForExistence(timeout:15))
+        
+        
+    }
+    
+    
+//    override func setUpWithError() throws {
+//        // Put setup code here. This method is called before the invocation of each test method in the class.
+//
+//        // In UI tests it is usually best to stop immediately when a failure occurs.
+//        continueAfterFailure = false
+//
+//        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+//    }
+//
+//    override func tearDownWithError() throws {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    }
+//
+//    func testExample() throws {
+//        // UI tests must launch the application that they test.
+//        let app = XCUIApplication()
+//        app.launch()
+//
+//        // Use recording to get started writing UI tests.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    }
+//
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
 }
