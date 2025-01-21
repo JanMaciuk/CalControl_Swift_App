@@ -82,6 +82,7 @@ struct AddMealView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 50)
+                        .accessibilityIdentifier("addMealViewEnterGrams")
                 }
 
                 VStack(spacing: 10) {
@@ -90,24 +91,28 @@ struct AddMealView: View {
                             .fontWeight(.semibold)
                         Spacer()
                         Text("\(Int(totalKcal))")
+                            .accessibilityIdentifier("addMealViewKcal")
                     }
                     HStack {
                         Text("Protein:")
                             .fontWeight(.semibold)
                         Spacer()
                         Text("\(Int(totalProtein)) g")
+                            .accessibilityIdentifier("addMealViewProteins")
                     }
                     HStack {
                         Text("Carbs:")
                             .fontWeight(.semibold)
                         Spacer()
                         Text("\(Int(totalCarbs)) g")
+                            .accessibilityIdentifier("addMealViewCarbs")
                     }
                     HStack {
                         Text("Fat:")
                             .fontWeight(.semibold)
                         Spacer()
                         Text("\(Int(totalFat)) g")
+                            .accessibilityIdentifier("addMealViewFat")
                     }
                 }
                 .font(.headline)
@@ -148,6 +153,7 @@ struct AddMealView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 50)
                 }
+                .accessibilityIdentifier("addMealViewAdd")
                 .padding(.top, 10)
 
                 Spacer()

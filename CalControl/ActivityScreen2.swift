@@ -80,6 +80,7 @@ struct ActivityScreen2: View {
                                     .foregroundColor(.white)
                             }
                         }
+                        .accessibilityIdentifier("activityScreen2Activities")
                         .onChange(of: selected_activity) { _ in
                             updateCalories()
                         }
@@ -102,6 +103,7 @@ struct ActivityScreen2: View {
                         .padding(.trailing, 20)
                         .font(.system(size: 24, weight: .bold))
                         .cornerRadius(15)
+                        .accessibilityIdentifier("activityScreen2Time")
                 }
                 
                 HStack {
@@ -122,6 +124,7 @@ struct ActivityScreen2: View {
                         }
                         .background(Color.white.opacity(0.2))
                         .cornerRadius(15)
+                        .accessibilityIdentifier("activityScreen2Intensivity")
                     }
                 }
                 HStack{
@@ -143,7 +146,7 @@ struct ActivityScreen2: View {
                 
                 HStack {
                     VStack {
-                        Text("Burned calories:")
+                        Text("Burned Kcalories:")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.system(size: 32, weight: .bold))
                             .foregroundColor(.white)
@@ -159,6 +162,7 @@ struct ActivityScreen2: View {
                                 .font(.system(size: 30, weight: .bold))
                                 .foregroundColor(.white)
                                 .padding()
+                                .accessibilityIdentifier("activityScreen2BurnedKcal")
                         }
                     }
                 }

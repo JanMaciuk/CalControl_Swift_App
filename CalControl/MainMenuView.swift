@@ -58,7 +58,7 @@ struct MainMenuView: View {
 
                         NavigationLink(destination: ManageMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage meals")
-                        }
+                        }.accessibilityIdentifier("mainMenuViewManageMeals")
                         Button(action: {
                             appState.saveToUserDefaults()
                             exit(0)

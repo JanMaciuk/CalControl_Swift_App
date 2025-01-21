@@ -53,12 +53,92 @@ class CalControlUITests: XCTestCase {
 
         XCTAssertEqual(bmi,"\(String(format: "%.6f",70/(1.7*1.7)))")
     }
+    
+    func testKcalAddMeals(){
+        let app = XCUIApplication()
+        app.launchArguments.append("--skip-onboarding")
+        app.launchArguments.append("--username=UI_TEST")
+        app.launchArguments.append("--weight=75")
+        app.launchArguments.append("--height=170")
+        app.launch()
         
+        let buttonActivities = app.buttons["mainMenuViewManageMeals"]
+        XCTAssert(buttonActivities.waitForExistence(timeout:5))
+        
+        buttonActivities.tap()
+        
+        let parowkiButton = app.buttons["ManageMealsViewProductParówki (Berlinki)"] //xddd
+        parowkiButton.tap()
+        
+        let parowkiGrams = app.textFields["addMealViewEnterGrams"]
+        parowkiGrams.tap()
+        parowkiGrams.typeText("200")
+        
+        // kcal 520
+        // protein 22 g
+        // carbs 10 g
+        // fat 42 g
+        //TODO sprawdzenie po wpisaniu gramatury
+        //            addMealViewKcal
+        //        addMealViewProteins
+        //        addMealViewCarbs
+        //        addMealViewFat
+        let addButton = app.buttons["addMealViewAdd"]
+        addButton.tap()
+        
+        //back to menu
+        //sprawdzenie w menu
+        //sprawdzenie w today meals
+        
+        
+    }
+        
+    
+    
+    
+    
     func testKcalAddActivites(){
         let app = XCUIApplication()
         app.launchArguments.append("--skip-onboarding")
+        app.launchArguments.append("--username=UI_TEST")
+        app.launchArguments.append("--weight=75")
+        app.launchArguments.append("--height=170")
         app.launch()
-        XCTAssert(app.buttons["mainMenuViewManageActivity"].waitForExistence(timeout:15))
+        
+        let buttonActivities = app.buttons["mainMenuViewManageActivity"]
+        XCTAssert(buttonActivities.waitForExistence(timeout:5))
+        
+        buttonActivities.tap()
+        
+        
+        let buttonAddActivity = app.buttons["activityScreenAddActivity"]
+        XCTAssert(buttonAddActivity.waitForExistence(timeout:0.5))
+        
+        buttonAddActivity.tap()
+        
+        let activityPicker = app.pickerWheels["activityScreen2Activities"]
+        print(activityPicker.debugDescription)
+        let activityPicker1 = app.datePickers["activityScreen2Time"]
+        print(activityPicker1.debugDescription)
+        let activityPicker2 = app.pickers["activityScreen2Intensivity"]
+        print(activityPicker2.debugDescription)
+        let activityPicker3 = app.staticTexts["activityScreen2BurnedKcal"]
+        print(activityPicker3.debugDescription)
+
+        
+//        let datePickers = app.datePickers["activityScreen2Time"]
+//        datePickers.tap()
+//
+//        let timePicker = datePickers.children(matching: .any).matching(identifier: "Time Picker").firstMatch
+//
+//        XCTAssert(timePicker.exists)
+//
+//        timePicker.adjust(toPickerWheelValue: "01:30")
+//
+//        timePicker.tap()
+//
+//        XCTAssertEqual(timePicker.value as? String, "01:30")
+
         
         
     }

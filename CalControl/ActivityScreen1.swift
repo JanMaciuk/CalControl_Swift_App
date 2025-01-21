@@ -84,7 +84,7 @@ struct ActicityScreen1: View {
                             .frame(width: UIScreen.main.bounds.width * 0.8)
                             .font(.system(size: 20, weight: .semibold))
                     }
-                )
+                ).accessibilityIdentifier("activityScreenAddActivity")
 
                 
             }

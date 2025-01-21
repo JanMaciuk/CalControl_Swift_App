@@ -24,11 +24,9 @@ struct YourApp: App {
                 height = heightValue
             }
 
-            // Obliczanie BMI, jeśli są dostępne waga i wysokość
             let bmi: Float = (weight > 0 && height > 0) ? Float(weight) / ((Float(height) / 100) * (Float(height) / 100)) : 0.0
 
 
-            // Ustawienie appState na podstawie danych
             if !username.isEmpty || weight > 0 || height > 0 {
                 _appState = StateObject(wrappedValue: AppState(username: username, weight: weight, height: height, bmi: bmi))
             } else if let savedAppState = AppState.loadFromUserDefaults() {

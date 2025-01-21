@@ -95,6 +95,7 @@ struct ManageMealsView: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    .accessibilityIdentifier("ManageMealsViewProduct\(product.name)")
                     .listRowBackground(Color.gray.opacity(0.25))
                 }
                 .listStyle(PlainListStyle())
