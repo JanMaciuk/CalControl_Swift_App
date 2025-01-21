@@ -79,10 +79,10 @@ struct TodayEatenMealsView: View {
 
                 // Podsumowanie
                 VStack(spacing: 5) {
-                    Text("Total Kcal: \(Int(totalKcal))")
-                    Text("Protein: \(Int(totalProtein)) g")
-                    Text("Carbs: \(Int(totalCarbs)) g")
-                    Text("Fat: \(Int(totalFat)) g")
+                    Text("Total Kcal: \(Int(totalKcal))").accessibilityIdentifier("mainMenuViewKcalConsumed")
+                    Text("Protein: \(Int(totalProtein)) g").accessibilityIdentifier("mainMenuViewProteinConsumed")
+                    Text("Carbs: \(Int(totalCarbs)) g").accessibilityIdentifier("mainMenuViewCarbsConsumed")
+                    Text("Fat: \(Int(totalFat)) g").accessibilityIdentifier("mainMenuViewFatConsumed")
                 }
                 .foregroundColor(.white)
                 .padding(.vertical, 20)

@@ -54,7 +54,7 @@ struct MainMenuView: View {
                         
                         NavigationLink(destination: TodayEatenMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Today meals")
-                        }
+                        }.accessibilityIdentifier("mainMenuViewTodayMeals")
 
                         NavigationLink(destination: ManageMealsView(appState: appState).navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                             MenuOptionView(title: "Manage meals")
@@ -88,6 +88,7 @@ struct MainMenuView: View {
                         HStack {
                             Text("Kcal consumed:       \(appState.kcal_consumed)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .accessibilityIdentifier("mainMenuViewKcalConsumed")
                         }
                         HStack {
                             Text("Kcal burned:             \(appState.kcal_burned)")

@@ -10,7 +10,6 @@ import XCTest
 class CalControlUITests: XCTestCase {
 
     func testCheckAllUiFiledsSetupScreen(){
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
         
@@ -69,28 +68,35 @@ class CalControlUITests: XCTestCase {
         
         let parowkiButton = app.buttons["ManageMealsViewProductParówki (Berlinki)"] //xddd
         parowkiButton.tap()
-        
+
         let parowkiGrams = app.textFields["addMealViewEnterGrams"]
         parowkiGrams.tap()
         parowkiGrams.typeText("200")
-        
-        // kcal 520
-        // protein 22 g
-        // carbs 10 g
-        // fat 42 g
-        //TODO sprawdzenie po wpisaniu gramatury
-        //            addMealViewKcal
-        //        addMealViewProteins
-        //        addMealViewCarbs
-        //        addMealViewFat
+
+        XCTAssertEqual(app.staticTexts["addMealViewKcal"].label,"\(520)")
+        XCTAssertEqual(app.staticTexts["addMealViewProteins"].label,"\(22)")
+        XCTAssertEqual(app.staticTexts["addMealViewCarbs"].label,"\(10)")
+        XCTAssertEqual(app.staticTexts["addMealViewFat"].label,"\(42)")
+
         let addButton = app.buttons["addMealViewAdd"]
         addButton.tap()
-        
-        //back to menu
-        //sprawdzenie w menu
-        //sprawdzenie w today meals
-        
-        
+
+        //TODO check if meal is added to eaten meals
+        //TODO go back to main menu
+
+        //main menu
+        XCTAssertTrue(app.staticTexts["mainMenuViewKcalConsumed"].label.contains("520"), "Label text does not contain '520'")
+
+        let buttonTodayMeals = app.buttons["mainMenuViewTodayMeals"]
+        buttonTodayMeals.tap()
+
+        //meals view 
+        let eatenMeals = app.staticTexts["mainMenuViewKcalConsumed"]
+        XCTAssert(eatenMeals.waitForExistence(timeout:0.5))
+        XCTAssertTrue(app.staticTexts["mainMenuViewKcalConsumed"].label.contains("520"), "Label text does not contain '520'")
+        XCTAssertTrue(app.staticTexts["mainMenuViewProteinConsumed"].label.contains("22"), "Label text does not contain '22'")
+        XCTAssertTrue(app.staticTexts["mainMenuViewCarbsConsumed"].label.contains("10"), "Label text does not contain '10'")
+        XCTAssertTrue(app.staticTexts["mainMenuViewFatConsumed"].label.contains("42"), "Label text does not contain '42'")
     }
         
     
