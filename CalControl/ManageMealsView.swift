@@ -33,7 +33,7 @@ struct ManageMealsView: View {
                             .font(.system(size: 30))
                             .foregroundColor(.white)
                             .padding(.leading, 16)
-                    }
+                    }.accessibilityIdentifier("ManageMealsViewProductBackToMenu")
                     
                     Spacer()
                     

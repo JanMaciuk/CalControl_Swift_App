@@ -70,7 +70,9 @@ struct MainMenuView: View {
                                 .background(Color.white)
                                 .cornerRadius(30)
                                 .padding(.top, 30)
+                                
                         }
+                        .accessibilityIdentifier("Quit")
                         .buttonStyle(PlainButtonStyle())
                     }
                     .padding(.top, 20)

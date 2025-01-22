@@ -33,7 +33,7 @@ struct TodayEatenMealsView: View {
                             .font(.system(size: 30))
                             .foregroundColor(.white)
                             .padding(.leading, 16)
-                    }
+                    }.accessibilityIdentifier("TodayEatenMealsViewBackToMenu")
                     Spacer()
                     Text("Today eaten meals")
                         .foregroundColor(.white)
@@ -65,9 +65,11 @@ struct TodayEatenMealsView: View {
                                 Text(eaten.product.name)
                                     .font(.headline)
                                     .foregroundColor(.white)
+                                    .accessibilityIdentifier("TodayEatenMealsViewProduct\(eaten.product.name)")
                                 Text("\(Int(eaten.grams)) g, \(Int(eaten.totalKcal)) kcal")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
+                                    .accessibilityIdentifier("TodayEatenMealsViewGrams\(eaten.product.name)")
                             }
                         }
                         .listRowBackground(Color.gray.opacity(0.2))

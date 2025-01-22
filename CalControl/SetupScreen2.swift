@@ -93,6 +93,7 @@ struct SetupScreenView2: View {
                             .font(.system(size: 70, weight: .semibold))
                             .padding(.bottom, 20)
                             .multilineTextAlignment(.center)
+                            .accessibilityIdentifier("MaitianWeight")
                         Text("Maintain\nweight")
                             .foregroundColor(.white)
                             .font(.system(size: 18, weight: .semibold))
@@ -154,7 +155,9 @@ struct SetupScreenView2: View {
                         .background(Color.white)
                         .cornerRadius(30)
                         .padding(.top, 30)
+                        
                 }
+                .accessibilityIdentifier("ButtonContinue")
                 .buttonStyle(PlainButtonStyle())
                 Spacer()
             }

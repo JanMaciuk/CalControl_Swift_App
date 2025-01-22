@@ -10,27 +10,112 @@ import XCTest
 
 class CalControlTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    var appstate: AppState!
+        
+        override func setUp() {
+            super.setUp()
+            appstate = AppState()
         }
-    }
 
+        override func tearDown() {
+            appstate = nil
+            super.tearDown()
+        }
+                
+        func testCalculateBMICorrectlyCalculatesBMI() {
+            appstate.weight = 70
+            appstate.height = 175
+            
+            appstate.calculateBMI()
+            
+            let expectedBMI: Float = 22.86
+            XCTAssertEqual(appstate.bmi, expectedBMI, accuracy: 0.01)
+        }
+        
+        func testCalculateBMIWithNilWeight() {
+            appstate.weight = nil
+            appstate.height = 175
+            
+            appstate.calculateBMI()
+            
+            XCTAssertEqual(appstate.bmi, 0.0)
+        }
+        
+        func testCalculateBMIWithNilHeight() {
+            appstate.weight = 70
+            appstate.height = nil
+            
+            appstate.calculateBMI()
+            
+            XCTAssertEqual(appstate.bmi, 0.0)
+        }
+
+            
+        func testDailyGoalStatusLooseWeight() {
+            appstate.kcal_consumed = 2000
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Loose weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Good balance - losing weight")
+        }
+        
+        func testDailyGoalStatusLooseWeightGaining() {
+            appstate.kcal_consumed = 3000
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Loose weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Bad balance - gaining weight")
+        }
+        
+        func testDailyGoalStatusMaintainWeight() {
+            appstate.kcal_consumed = 2500
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Maintain weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Good balance - maintaining weight")
+        }
+        
+        func testDailyGoalStatusMaintainWeightLosing() {
+            appstate.kcal_consumed = 2000
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Maintain weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Bad balance - losing weight")
+        }
+        
+        func testDailyGoalStatusGainWeight() {
+            appstate.kcal_consumed = 3000
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Gain weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Good balance - gaining weight")
+        }
+        
+        func testDailyGoalStatusGainWeightLosing() {
+            appstate.kcal_consumed = 2000
+            appstate.kcal_burned = 2500
+            appstate.weightGoal = "Gain weight"
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "Bad balance - losing weight")
+        }
+        
+        func testDailyGoalStatusNoGoal() {
+            appstate.weightGoal = ""
+            
+            let result = appstate.dailyGoalStatus()
+            
+            XCTAssertEqual(result, "-- no goal set --")
+        }
 }
